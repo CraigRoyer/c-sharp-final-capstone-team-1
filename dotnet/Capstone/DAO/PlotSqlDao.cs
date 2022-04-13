@@ -46,13 +46,12 @@ namespace Capstone.DAO
 
         public Plot AddPlot(Plot newPlot)
         {
-
+            int newPlotId;
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-
                     SqlCommand cmd = new SqlCommand("INSERT INTO plot (user_id, plot_length, plot_width, sun_exposure_hours, zone_info, plot_name) " +
                                                     "OUTPUT INSERTED.plot_id_number " +
                                                     "VALUES(@user_id, @plot_length, @plot_width, @sun_exposure_hours, @zone_info, @plot_name)", conn);
@@ -61,16 +60,16 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@plot_length", newPlot.Length);
                     cmd.Parameters.AddWithValue("@sun_exposure_hours", newPlot.SunExposure);
                     cmd.Parameters.AddWithValue("@zone_info", newPlot.Zone);
-                    cmd.Parameters.AddWithValue("@plot_id", newPlot.PlotId);
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("@user_id", newPlot.UserId);
+                    //cmd.ExecuteNonQuery();
+                    newPlotId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
             catch (SqlException)
             {
                 throw;
             }
-
-            return GetPlot(newPlot.PlotId);
+            return GetPlot(newPlotId);
         }
 
         private Plot GetPlotFromReader(SqlDataReader reader)
