@@ -2,6 +2,10 @@
 using Capstone.DAO;
 using Capstone.Models;
 using Capstone.Security;
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Capstone.Controllers
 {
@@ -11,37 +15,40 @@ namespace Capstone.Controllers
     {
         private readonly IPlotDao plotDao;
 
-        [HttpGet("{plotId}")]
-        public IActionResult GetPlotByPlotId(int plotId)
+        public PlotController (IPlotDao _plotDao)
         {
-            IActionResult result;
+            plotDao = _plotDao;
+        }
 
+        [HttpGet("{plotId}")]
+        public ActionResult<Plot> GetPlotByPlotId(int plotId)
+        {
             // Get the plot by plotId
             Plot plot = plotDao.GetPlot(plotId);
+
             if (plot != null)
             {
-                result = Ok(plot);
-                return result;
+                //return plot;
+                return Ok(plot);
             }
             else return NotFound();
         }
 
         [HttpPost("create")]
-        public IActionResult CreatePlot(Plot plot)
+        public ActionResult<Plot> CreatePlot(Plot plot)
         {
-            IActionResult result;
 
             Plot newPlot = plotDao.AddPlot(plot);
+
             if (newPlot != null)
             {
-                result = Created($"/plot/{newPlot.PlotId}",newPlot); //values aren't read on client
+                return Created($"/plot/{newPlot.PlotId}",newPlot); //values aren't read on client
             }
             else
             {
-                result = BadRequest(new { message = "An error occurred and your plot was not created." });
+                return NotFound();
             }
 
-            return result;
         }
     }
 }
