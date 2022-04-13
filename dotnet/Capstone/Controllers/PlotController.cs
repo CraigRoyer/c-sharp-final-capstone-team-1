@@ -5,11 +5,16 @@ using Capstone.Security;
 
 namespace Capstone.Controllers
 {
-    [Route("[controller]")]
+    [Route("plot")]
     [ApiController]
     public class PlotController : ControllerBase
     {
         private readonly IPlotDao plotDao;
+
+        public PlotController(IPlotDao _plotdao)
+        {
+            plotDao = _plotdao;
+        }
 
         [HttpGet("{plotId}")]
         public IActionResult GetPlotByPlotId(int plotId)
@@ -23,7 +28,7 @@ namespace Capstone.Controllers
                 result = Ok(plot);
                 return result;
             }
-            else return NotFound();
+            else return StatusCode(420);
         }
 
         [HttpPost("create")]
@@ -42,6 +47,8 @@ namespace Capstone.Controllers
             }
 
             return result;
+
+            
         }
     }
 }
