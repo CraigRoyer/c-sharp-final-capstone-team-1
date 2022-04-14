@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Capstone.Models;
 using Capstone.Security;
@@ -72,12 +73,49 @@ namespace Capstone.DAO
             return GetPlot(newPlotId);
         }
 
+        public List<Plot> ListPlots(int userId)
+        {
+            List<Plot> plots = new List<Plot>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(@"SELECT plot_name, plot_id_number, plot_length, plot_width, zone_info, sun_exposure_hours
+                                                FROM plot JOIN users ON users.user_id = plot.user_id WHERE users.user_id = @user_id", conn);
+                cmd.Parameters.AddWithValue("@user_id", userId);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    try
+                    {
+                        //Plot plot = new Plot();
+                        //plot.UserId = Convert.ToInt32(reader["user_id"]);//do we need?
+                        //plot.PlotName = Convert.ToString(reader["plotName"]);
+                        //plot.PlotId = Convert.ToInt32(reader["plot_id"]);
+                        //plot.Length = Convert.ToInt32(reader["length"]);
+                        //plot.Width = Convert.ToInt32(reader["width"]);
+                        //plot.SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]);
+                        //plot.Zone = Convert.ToInt32(reader["zone"]);
+                        Plot plot = GetPlotFromReader(reader);
+                        plots.Add(plot);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+
+                }
+                return plots;
+            }
+
+        }
+
         private Plot GetPlotFromReader(SqlDataReader reader)
         {
             Plot p = new Plot()
             {
                 PlotId = Convert.ToInt32(reader["plot_id_number"]),
-                SunExposure = Convert.ToString(reader["sun_exposure_hours"]),
+                SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]),
                 Zone = Convert.ToInt32(reader["zone_info"]),
                 Length = Convert.ToInt32(reader["plot_length"]),
                 Width = Convert.ToInt32(reader["plot_width"]),
@@ -89,3 +127,4 @@ namespace Capstone.DAO
         }
     }
 }
+

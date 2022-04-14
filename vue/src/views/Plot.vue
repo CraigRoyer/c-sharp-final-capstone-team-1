@@ -11,6 +11,16 @@ import PlotDetail from '../components/PlotDetail.vue';
 export default {
   components: {
     PlotDetail
+  },
+methods: {
+    addNewForm() {
+      this.plots.unshift(this.newPlot);
+      this.resetForm();
+    },
+    resetForm() {
+      this.newPlot = {};
+      this.showForm = false; 
+    }
   }
-};
+}
 </script>
