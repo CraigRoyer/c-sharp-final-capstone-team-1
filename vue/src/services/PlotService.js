@@ -9,6 +9,19 @@ export default {
   getPlot(plotId) {
     return http.get(`https://localhost:44315/plot/${plotId}`);
   },
+  
+  create(plot) {
+    return http.post(`/plot/create`, plot);
+  },
+
+  update(plotId, plot) {
+    return http.put(`/plot/${plotId}`, plot);
+  },
+
+  delete(plotId) {
+    return http.delete(`/plot/${plotId}`);
+  }
+
 
 //   getCards(boardID) {
 //     return http.get(`/boards/${boardID}`)
