@@ -16,3 +16,4 @@ namespace Capstone.Models
         public string PlotName { get; set; }
     }
 }
+

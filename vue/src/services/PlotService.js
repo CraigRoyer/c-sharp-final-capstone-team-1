@@ -11,6 +11,19 @@ getTopPlotOnLogin(){
   create(plot) {
     return axios.post(`/plot/create`, plot);
   },
+  
+  create(plot) {
+    return http.post(`/plot/create`, plot);
+  },
+
+  update(plotId, plot) {
+    return http.put(`/plot/${plotId}`, plot);
+  },
+
+  delete(plotId) {
+    return http.delete(`/plot/${plotId}`);
+  }
+
 
   update(plotId, plot) {
     return axios.put(`/plot/${plotId}`, plot);
