@@ -9,3 +9,4 @@ namespace Capstone.DAO
         User GetUsernameByUserId(int userId);
     }
 }
+
