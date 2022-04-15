@@ -9,14 +9,24 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Capstone.Controllers
 {
-    [Route("[controller]")]
+    [Route("plot")]
     [ApiController]
     public class PlotController : ControllerBase
     {
         private readonly IPlotDao plotDao;
         private readonly IUserDao userDao;
 
+<<<<<<< HEAD
         public PlotController(IPlotDao _plotDao, IUserDao _userDao)
+=======
+        public PlotController(IPlotDao _plotdao)
+        {
+            plotDao = _plotdao;
+        }
+
+        [HttpGet("{plotId}")]
+        public IActionResult GetPlotByPlotId(int plotId)
+>>>>>>> main
         {
             plotDao = _plotDao;
             userDao = _userDao;
@@ -33,7 +43,7 @@ namespace Capstone.Controllers
                 //return plot;
                 return Ok(plot);
             }
-            else return NotFound();
+            else return StatusCode(420);
         }
         [HttpGet("plots")]
         public ActionResult<List<Plot>> ListPlotsById(int userId)
@@ -58,6 +68,12 @@ namespace Capstone.Controllers
                 return NotFound();
             }
 
+<<<<<<< HEAD
+=======
+            return result;
+
+            
+>>>>>>> main
         }
     }
 }
