@@ -24,7 +24,7 @@ export default {
     };
   },
   created() {
-      plotService.getPlot(this.$route.params.plotId).then((response) => {
+      plotService.getTopPlotOnLogin().then((response) => {
           this.plot = response.data;
           
       });

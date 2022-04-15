@@ -1,13 +1,15 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:3000"
-});
-
 export default {
-
+getTopPlotOnLogin(){
+   return axios.get(`/plot`);
+  },
   getPlot(plotId) {
-    return http.get(`https://localhost:44315/plot/${plotId}`);
+    return axios.get(`/plot/${plotId}`);
+  },
+  
+  create(plot) {
+    return axios.post(`/plot/create`, plot);
   },
   
   create(plot) {
@@ -20,6 +22,15 @@ export default {
 
   delete(plotId) {
     return http.delete(`/plot/${plotId}`);
+  }
+
+
+  update(plotId, plot) {
+    return axios.put(`/plot/${plotId}`, plot);
+  },
+
+  delete(plotId) {
+    return axios.delete(`/plot/${plotId}`);
   }
 
 
