@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>This will have your plot info</p>
+  <div class ="home">
+    <h1>Plot Detail</h1>
+    <plot-detail v-bind:plotId='$route.params.plotId'/>
     <form>
             <h2>Add new plot:</h2>
             <label for="name">Plot Name:</label><br/>
@@ -28,7 +28,11 @@
 </template>
 
 <script>
+import PlotDetail from '../components/PlotDetail.vue';
+
 export default {
-  name: "home"
+  components: {
+    PlotDetail
+  }
 };
 </script>

@@ -5,7 +5,7 @@ using Capstone.Security;
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
-
+using System.Security.Claims;
 
 namespace Capstone.Controllers
 {
@@ -39,6 +39,27 @@ namespace Capstone.Controllers
         public ActionResult<List<Plot>> ListPlotsById(int userId)
         {
             // string username = userDao.GetUsernameByUserId(userId) //do we need this?
+            return plotDao.ListPlots(userId);
+        }
+
+
+        [HttpGet]
+        public ActionResult<Plot> GetPlotByUserId()
+        {
+            int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            Plot plot = plotDao.GetTopPlotByUserId(userId);
+
+            if (plot != null)
+            {
+                //return plot;
+                return Ok(plot);
+            }
+            else return StatusCode(418);
+        }
+        [HttpGet("allplots")]
+        public ActionResult<List<Plot>> ListPlotsById()
+        {
+            int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
             return plotDao.ListPlots(userId);
         }
 
