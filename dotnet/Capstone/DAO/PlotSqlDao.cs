@@ -44,6 +44,33 @@ namespace Capstone.DAO
 
             return returnPlot;
         }
+        public Plot GetTopPlotByUserId(int userId)
+        {
+            Plot returnPlot = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT TOP 1 plot_name, plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info FROM plot WHERE user_id = @user_id", conn);
+                    cmd.Parameters.AddWithValue("@user_id", userId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        returnPlot = GetPlotFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return returnPlot;
+        }
 
         public Plot AddPlot(Plot newPlot)
         {

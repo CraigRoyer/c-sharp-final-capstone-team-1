@@ -1,12 +1,16 @@
 <template>
-  <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+  <div>
+    <h1>Plot Detail</h1>
+    <plot-detail v-bind:plotId='$route.params.plotId'/>
   </div>
 </template>
 
 <script>
+import PlotDetail from '../components/PlotDetail.vue';
+
 export default {
-  name: "home"
+  components: {
+    PlotDetail
+  }
 };
 </script>
