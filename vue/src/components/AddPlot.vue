@@ -1,30 +1,32 @@
 <template>
+<div>
       <form v-on:submit.prevent>
           <div class="field">
             <label for="plotName">Plot Name:</label>
-            <input type="text" v-model="plot.plotName" />
+            <input type="text" v-model="plot.PlotName" />
             </div>
             <div class="field">
             <label for="length">Length:</label>
-            <input type="number" min="1" v-model="plot.length" />
+            <input type="number" v-model="plot.Length" />
             </div>
             <div class = "field">
             <label for="width">Width:</label>
-            <input  type="number" min="1" v-model="plot.width" />
+            <input type="number" v-model="plot.Width" />
             </div>
             <div class="field">
             <label for="sunExposure">Hours of Sun Exposure:</label>
-            <input  type="number" min="1" max="24" v-model="plot.sunExposure" />
+            <input type="number" v-model="plot.SunExposure" />
             </div>
             <div class ="field">
             <label for="zone">Zone:</label>
-            <input type="number" min="1" max="10" v-model="plot.zone" />
+            <input type="number" v-model="plot.Zone" />
             </div>
     <div class="actions">
       <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
       <button type="submit" v-on:click="savePlot()">Save Plot</button>
     </div>
         </form>
+        </div>
 </template>
 
 <script>
@@ -35,28 +37,44 @@ export default {
   data() {
     return {
       plot: {
-        //userId:0,//what should this be
-        length:null,
-        width:null,
-        sunExposure:null,
-        zone:null,
-        //plotId:0,//maybe not here
-        plotName:''
+        PlotName:'',
+        Length:0,
+        Width:0,
+        SunExposure:0,
+        Zone:0,
+       // PlotId:0,
+       // UserId:0,
+        
       }
     };
   },
   methods: {
     savePlot() {
+      this.plot.Length = parseInt(this.plot.Length);
+      this.plot.Width = parseInt(this.plot.Width);
+      this.plot.SunExposure = parseInt(this.plot.SunExposure);
+      this.plot.Zone = parseInt(this.plot.Zone);
       PlotService
         .create(this.plot)
         .then(response => {
           if (response.status === 201) {
+            console.log(this.plot)
             this.$router.push("/plot");
           }
         })
-        .catch(error => {
-          console.error(error);
+       .catch((error) => {
+          if (error.response) {
+            this.errorMsg =
+              "Error adding Profile Information. Response received was '" +
+              error.response.statusText +
+              "'.";
+          } else if (error.request) {
+            this.errorMsg = "Error adding Profile Information. Server could not be reached.";
+          } else {
+            this.errorMsg = "Error adding Profile Information. Request could not be created.";
+          }
         });
+
     },
     cancel() {
       this.$router.push("/plot");
@@ -64,3 +82,4 @@ export default {
   }
 };
 </script>
+
