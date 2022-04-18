@@ -67,7 +67,8 @@ namespace Capstone.Controllers
         [HttpPost("create")]
         public ActionResult<Plot> CreatePlot(Plot plot)
         {
-
+            int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            plot.UserId = userId;
             Plot newPlot = plotDao.AddPlot(plot);
 
             if (newPlot != null)
