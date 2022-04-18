@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Plot from '../views/Plot.vue'
 
+
 Vue.use(Router)
 
 /**
