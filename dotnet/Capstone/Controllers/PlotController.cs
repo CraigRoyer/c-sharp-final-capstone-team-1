@@ -72,7 +72,8 @@ namespace Capstone.Controllers
 
             if (newPlot != null)
             {
-                return Created($"/plot/{newPlot.PlotId}", newPlot); //values aren't read on client
+                return Created($"/plot/{newPlot.PlotId}", newPlot);
+                //values aren't read on client
             }
             else
             {
