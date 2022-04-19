@@ -55,7 +55,7 @@ export default {
       this.plot.SunExposure = parseInt(this.plot.SunExposure);
       this.plot.Zone = parseInt(this.plot.Zone);
       PlotService
-        .create(this.plot)
+        .savePlotToLoggedInUser(this.plot)
         .then(response => {
           if (response.status === 201) {
             console.log(this.plot)

@@ -116,15 +116,15 @@ namespace Capstone.DAO
                 {
                     try
                     {
-                        //Plot plot = new Plot();
-                        //plot.UserId = Convert.ToInt32(reader["user_id"]);//do we need?
-                        //plot.PlotName = Convert.ToString(reader["plotName"]);
-                        //plot.PlotId = Convert.ToInt32(reader["plot_id"]);
-                        //plot.Length = Convert.ToInt32(reader["length"]);
-                        //plot.Width = Convert.ToInt32(reader["width"]);
-                        //plot.SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]);
-                        //plot.Zone = Convert.ToInt32(reader["zone"]);
-                        Plot plot = GetPlotFromReader(reader);
+                        Plot plot = new Plot();
+                        plot.UserId = Convert.ToInt32(reader["user_id"]);//do we need?
+                        plot.PlotName = Convert.ToString(reader["plotName"]);
+                        plot.PlotId = Convert.ToInt32(reader["plot_id"]);
+                        plot.Length = Convert.ToInt32(reader["length"]);
+                        plot.Width = Convert.ToInt32(reader["width"]);
+                        plot.SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]);
+                        plot.Zone = Convert.ToInt32(reader["zone"]);
+                        //Plot plot = GetPlotFromReader(reader);
                         plots.Add(plot);
                     }
                     catch (Exception)

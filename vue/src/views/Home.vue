@@ -12,7 +12,7 @@
 
 <script>
 import PlotDetail from '../components/PlotDetail';
-import AddPlot from '../components/AddPlot';
+//import AddPlot from '../components/AddPlot';
 
 export default {
   components: {
