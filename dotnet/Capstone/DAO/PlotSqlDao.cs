@@ -136,6 +136,25 @@ namespace Capstone.DAO
             }
             
         }
+        public Plot AddPlantToPlot(int plantId, int plotId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO plot_plants" +
+                                                    "VALUES(@plant_id, @plot_id)", conn);
+                    cmd.Parameters.AddWithValue("@plant_id", plantId);
+                    cmd.Parameters.AddWithValue("@plot_id", plotId);
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return GetPlot(plotId);
+        }
 
         private Plot GetPlotFromReader(SqlDataReader reader)
         {

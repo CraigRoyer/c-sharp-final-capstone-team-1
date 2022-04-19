@@ -8,5 +8,6 @@ namespace Capstone.DAO
             Plot AddPlot(Plot plot);
             List<Plot> ListPlots(int userId);
             Plot GetTopPlotByUserId(int userId);
+            Plot AddPlantsToPlot(int plantId, int plotId);
     }
 }

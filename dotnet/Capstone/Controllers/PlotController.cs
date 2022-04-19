@@ -15,11 +15,13 @@ namespace Capstone.Controllers
     {
         private readonly IPlotDao plotDao;
         private readonly IUserDao userDao;
+        private readonly IPlantDao plantDao;
 
-        public PlotController(IPlotDao _plotDao, IUserDao _userDao)
+        public PlotController(IPlotDao _plotDao, IUserDao _userDao, IPlantDao _plantDao)
         {
             plotDao = _plotDao;
             userDao = _userDao;
+            plantDao = _plantDao;
         }
 
         [HttpGet("{plotId}")]
@@ -74,6 +76,24 @@ namespace Capstone.Controllers
             if (newPlot != null)
             {
                 return Created($"/plot/{newPlot.PlotId}", newPlot);
+                //values aren't read on client
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+        [HttpPost("{plotId}/plant")]
+        public ActionResult AddPlant(int plantId, int plotId)
+        {
+            plotDao.AddPlantsToPlot(plantId, plotId);
+            Plot addedPlot = plotDao.GetPlot(plotId);
+            Plant addedPlant = plantDao.GetPlantByPlantId(plantId);
+
+            if (addedPlot != null && addedPlant != null)
+            {
+                return Accepted();
                 //values aren't read on client
             }
             else

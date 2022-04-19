@@ -18,6 +18,9 @@ export default {
 
   delete(plotId) {
     return axios.delete(`/plot/${plotId}`);
+  },
+  addPlantToPlot(plantId,plotId){
+    return axios.post(`/plot/${plotId}/plant`)
   }
 
 
