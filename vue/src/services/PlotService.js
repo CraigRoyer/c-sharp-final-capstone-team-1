@@ -12,9 +12,9 @@ export default {
     return axios.post(`/plot/create`, plot);
   }
   
-  update(plotId, plot) {
-    return axios.put(`/plot/${plotId}`, plot);
-  },
+  // update(plotId, plot) {
+  //   return axios.put(`/plot/${plotId}`, plot);
+  // },
 
 
   // update(plotId, plot) {
