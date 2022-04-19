@@ -67,16 +67,26 @@ namespace Capstone.Controllers
         [HttpPost("/plot/create")]
         public ActionResult<Plot> CreatePlot(Plot plot)
         {
+<<<<<<< HEAD
 
             int subInUserId = Convert.ToInt32(User.FindFirst("sub")?.Value);
             plot.UserId = subInUserId;
 
+=======
+            int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            plot.UserId = userId;
+>>>>>>> 75c58319ccbd5719ce754f7d444d2b4e90887421
             Plot newPlot = plotDao.AddPlot(plot);
 
             if (newPlot != null)
             {
+<<<<<<< HEAD
                 //return Created($"/plot/{newPlot.PlotId}", newPlot); //values aren't read on client
                 return Created($"/plot/{newPlot.PlotName}", newPlot);
+=======
+                return Created($"/plot/{newPlot.PlotId}", newPlot);
+                //values aren't read on client
+>>>>>>> 75c58319ccbd5719ce754f7d444d2b4e90887421
             }
             else
             {

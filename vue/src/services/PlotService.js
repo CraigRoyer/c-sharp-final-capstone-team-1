@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default {
-getTopPlotOnLogin(){
+  getTopPlotOnLogin(){
    return axios.get(`/plot`);
   },
   // getPlot(plotId) {
@@ -12,6 +12,7 @@ getTopPlotOnLogin(){
     return axios.post(`/plot/create`, plot);
   }
   
+<<<<<<< HEAD
   // submitForm(){
   //   axios.post('/contact', this.form)
   //        .then((res) =>
@@ -28,6 +29,11 @@ getTopPlotOnLogin(){
   // delete(plotId) {
   //   return http.delete(`/plot/${plotId}`);
   // }
+=======
+  update(plotId, plot) {
+    return axios.put(`/plot/${plotId}`, plot);
+  },
+>>>>>>> 75c58319ccbd5719ce754f7d444d2b4e90887421
 
 
   // update(plotId, plot) {
