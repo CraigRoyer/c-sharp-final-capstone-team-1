@@ -16,21 +16,12 @@ namespace Capstone.Controllers
         private readonly IPlotDao plotDao;
         private readonly IUserDao userDao;
 
-<<<<<<< HEAD
         public PlotController(IPlotDao _plotDao, IUserDao _userDao)
-=======
-        public PlotController(IPlotDao _plotdao)
         {
             plotDao = _plotdao;
-        }
-
-        [HttpGet("{plotId}")]
-        public IActionResult GetPlotByPlotId(int plotId)
->>>>>>> main
-        {
-            plotDao = _plotDao;
             userDao = _userDao;
         }
+
 
         [HttpGet("{plotId}")]
         public ActionResult<Plot> GetPlotByPlotId(int plotId)
@@ -74,27 +65,25 @@ namespace Capstone.Controllers
         }
 
 
-        [HttpPost("create")]
+        [HttpPost("/plot/create")]
         public ActionResult<Plot> CreatePlot(Plot plot)
         {
+
+            int subInUserId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            plot.UserId = subInUserId;
 
             Plot newPlot = plotDao.AddPlot(plot);
 
             if (newPlot != null)
             {
-                return Created($"/plot/{newPlot.PlotId}", newPlot); //values aren't read on client
+                //return Created($"/plot/{newPlot.PlotId}", newPlot); //values aren't read on client
+                return Created($"/plot/{newPlot.PlotName}", newPlot);
             }
             else
             {
                 return NotFound();
             }
 
-<<<<<<< HEAD
-=======
-            return result;
-
-            
->>>>>>> main
         }
     }
 }

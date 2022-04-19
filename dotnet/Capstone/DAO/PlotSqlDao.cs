@@ -5,6 +5,7 @@ using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
 
+
 namespace Capstone.DAO
 {
     public class PlotSqlDao : IPlotDao
@@ -26,12 +27,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-<<<<<<< HEAD
-                    SqlCommand cmd = new SqlCommand("SELECT plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info, plot_name " +
-                                                    "FROM plot WHERE plot_id_number = @plot_id_number", conn);
-=======
                     SqlCommand cmd = new SqlCommand("SELECT plot_id_number, user_id, plot_length, plot_width, sun_exposure_hours, zone_info, plot_name FROM plot WHERE plot_id_number = @plot_id_number", conn);
->>>>>>> main
                     cmd.Parameters.AddWithValue("@plot_id_number", plotId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -84,7 +80,6 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-<<<<<<< HEAD
                     SqlCommand cmd = new SqlCommand("INSERT INTO plot (user_id, plot_length, plot_width, sun_exposure_hours, zone_info, plot_name) " +
                                                     "OUTPUT INSERTED.plot_id_number " +
                                                     "VALUES(@user_id, @plot_length, @plot_width, @sun_exposure_hours, @zone_info, @plot_name)", conn);
@@ -96,19 +91,6 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@user_id", newPlot.UserId);
                     //cmd.ExecuteNonQuery();
                     newPlotId = Convert.ToInt32(cmd.ExecuteScalar());
-=======
-
-                    SqlCommand cmd = new SqlCommand(@"INSERT INTO plot (user_id, plot_length, plot_width, sun_exposure_hours, zone_info, plot_name)
-                                                            OUTPUT INSERTED.plot_id_number
-                                                            VALUES (@user_id, @plot_length, @plot_width, @sun_exposure_hours, @zone_info, @plot_name)", conn);
-                    cmd.Parameters.AddWithValue("@user_id", plot.UserId);
-                    cmd.Parameters.AddWithValue("@plot_length", plot.Length);
-                    cmd.Parameters.AddWithValue("@plot_width", plot.Width);
-                    cmd.Parameters.AddWithValue("@sun_exposure_hours", plot.SunExposure);
-                    cmd.Parameters.AddWithValue("@zone_info", plot.Zone);
-                    cmd.Parameters.AddWithValue("@plot_name", plot.PlotName);
-                    cmd.ExecuteNonQuery();
->>>>>>> main
                 }
             }
             catch (SqlException)
@@ -160,21 +142,12 @@ namespace Capstone.DAO
             Plot p = new Plot()
             {
                 PlotId = Convert.ToInt32(reader["plot_id_number"]),
-<<<<<<< HEAD
                 SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]),
                 Zone = Convert.ToInt32(reader["zone_info"]),
                 Length = Convert.ToInt32(reader["plot_length"]),
                 Width = Convert.ToInt32(reader["plot_width"]),
                 UserId = Convert.ToInt32(reader["user_id"]), //????
                 PlotName = Convert.ToString(reader["plot_name"])
-=======
-                UserId = Convert.ToInt32(reader["user_id"]),
-                Length = Convert.ToInt32(reader["plot_length"]),
-                Width = Convert.ToInt32(reader["plot_width"]),
-                SunExposure = Convert.ToString(reader["sun_exposure_hours"]),
-                Zone = Convert.ToInt32(reader["zone_info"]),
-                PlotName = Convert.ToString(reader["plot_name"])    
->>>>>>> main
             };
 
             return p;
