@@ -13,13 +13,13 @@ export default {
   data() {
     return {
       plot: {
-          plotId:null,
-          userId:null,
-          lengths:null,
-          width:null,
-          sunExposure:null,
-          zoneInfo:null,
-          plotName:''
+         PlotName:'',
+        Length:0,
+        Width:0,
+        SunExposure:0,
+        Zone:0,
+        PlotId:0,
+        UserId:0,
       }
     };
   },

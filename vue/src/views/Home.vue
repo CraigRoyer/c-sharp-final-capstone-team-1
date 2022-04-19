@@ -4,9 +4,13 @@
     <create-plot/>
 
   <div class ="home">
-    <h1>Plot Detail</h1>
+    <h1>My Top Garden Plot</h1>
     <plot-detail v-bind:plotId='$route.params.plotId'/>
-    <add-plot></add-plot>
+
+    <h2> Create New Plot </h2>
+      <router-link :to="{ name: 'CreatePlot' }"
+      >Create New Plot</router-link>
+
   </div>
 </template>
 
@@ -17,7 +21,7 @@ import PlotDetail from '../components/PlotDetail.vue';
 
 export default {
   components: {
-    PlotDetail
+    PlotDetail,
   }
 
 };
