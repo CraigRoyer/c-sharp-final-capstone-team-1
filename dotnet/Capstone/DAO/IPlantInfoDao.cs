@@ -10,7 +10,7 @@ namespace Capstone.DAO
     {
         PlantInfo GetPlantInfo(string plantName); //Not sure if using, reads from csv
         Dictionary<string, PlantInfo> GetAllPlantInfos(); //takes csv file, makes dictionary
-        void AddAllPlantInfosFromCsvToDatabase(PlantInfo newPlantInfo); //creates db enteries for each PlantInfo in cvs file
+        void AddAllPlantInfosFromCsvToDatabase(); //creates db enteries for each PlantInfo in cvs file
 
 
 

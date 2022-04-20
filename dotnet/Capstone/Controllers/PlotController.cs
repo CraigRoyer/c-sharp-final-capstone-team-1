@@ -15,11 +15,13 @@ namespace Capstone.Controllers
     {
         private readonly IPlotDao plotDao;
         private readonly IUserDao userDao;
+        private readonly IPlantInfoDao plantInfoDao;
 
-        public PlotController(IPlotDao _plotDao, IUserDao _userDao)
+        public PlotController(IPlotDao _plotDao, IUserDao _userDao, IPlantInfoDao _plantInfoDao)
         {
             plotDao = _plotDao;
             userDao = _userDao;
+            plantInfoDao = _plantInfoDao;
         }
 
         [HttpGet("{plotId}")]

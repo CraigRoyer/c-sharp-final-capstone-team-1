@@ -37,6 +37,21 @@ namespace Capstone.Models
             this.ImageUrl = imageUrl;
         }
 
+        public PlantInfo()
+        {
+
+        }
+
+        public PlantInfo(string name, string sowInstructions, string spaceInstructions, string harvestInstructions, string compatiblePlants, string avoidInstructions)
+        {
+            this.Name = name;
+            this.SowInstructions = sowInstructions;
+            this.SpaceInstructions = spaceInstructions;
+            this.HavestInstructions = harvestInstructions;
+            this.CompatiblePlants = compatiblePlants;
+            this.AvoidInstructions = avoidInstructions;
+        }
+
     }
   
 }

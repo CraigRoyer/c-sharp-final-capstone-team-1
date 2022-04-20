@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Capstone.DAO
 {
-    public class PlantInfoCsvDao : IPlantInfoDao //----update interface with missing method names
+    public class PlantInfoCsvDao : IPlantInfoDao 
     {
         Dictionary<string, PlantInfo> plantDictionary = new Dictionary<string, PlantInfo>();
         public Dictionary<string, PlantInfo> GetAllPlantInfos()
@@ -27,9 +27,30 @@ namespace Capstone.DAO
                     while (!sr.EndOfStream)
                     {
                         string line = sr.ReadLine();
-                        string[] plantInfoAll = line.Split(",");
 
-                        PlantInfo plant = new PlantInfo(plantInfoAll[0], plantInfoAll[1], plantInfoAll[2], plantInfoAll[3], plantInfoAll[4], plantInfoAll[5], plantInfoAll[8]); //map strings to PlantInfo Model
+                        //for (int i = 0; i < line.Length; i++)
+                        //{
+                        //    //string[] plantInfoAll = new string[7];
+                        //    if (line[i] == '\"') //quotes are closing or opening
+                        //    {
+                        //        string[] plantInfoAll = line.Split('\"');
+                        //    }
+                        //    else if (line[i] == ',')
+                        //    {
+                        //        string[] plantInfoAll = line.Split(",");
+                        //    }
+                        //}
+
+                        string[] plantInfoAll = line.Split(",");
+                        string[] plantImageLinks = line.Split("http");
+                        string imgUrlClean = "http" + plantImageLinks[1].Replace(",", "");
+                        //Optional
+                        //string compatibleDitry = line.Split("Compatible with (can grow beside): ")[1];
+                        //string compatibleClean = compatibleDitry.Remove(compatibleDitry.IndexOf("\","));
+
+                        //Name,alternateName,sowInstructions,spaceInstructions,harvestInstructions,compatiblePlants,avoidInstructions,culinaryHints,culinaryPreservation,url
+                        PlantInfo plant = new PlantInfo(plantInfoAll[0], plantInfoAll[1], plantInfoAll[2], plantInfoAll[3], plantInfoAll[4], plantInfoAll[5] , imgUrlClean); //map strings to PlantInfo Model
+                        //PlantInfo plant = new PlantInfo(plantInfoAll[0], plantInfoAll[1], plantInfoAll[2], plantInfoAll[3], plantInfoAll[4], plantInfoAll[5]);
                         plantDictionary[plantInfoAll[0]] = plant; //Adds each plant to dictionary with plant name as key
                     }
                 }
@@ -40,7 +61,7 @@ namespace Capstone.DAO
                 throw;
             }
 
-            return plantDictionary; //return models 
+            return plantDictionary; //return models //-----not sure if using yet
         }
 
         public PlantInfo GetPlantInfo(string plantName)
@@ -60,37 +81,61 @@ namespace Capstone.DAO
         public PlantInfoCsvDao (string dbConnectionString)
         {
             connectionString = dbConnectionString;
+            AddAllPlantInfosFromCsvToDatabase();
         }
 
-        public void AddAllPlantInfosFromCsvToDatabase() //don't know how to excecute yet == add exclusive button for admin user??
+        public void AddAllPlantInfosFromCsvToDatabase() //don't know how to excecute == add exclusive button for admin user??
         {
             GetAllPlantInfos();
-            foreach (KeyValuePair<string, PlantInfo> entry in plantDictionary)
+            SqlDataReader hasRowsreader;
+            bool emptyPlantTable;
+            try
             {
-                int newPlantId;
-                try
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
-                    using (SqlConnection conn = new SqlConnection(connectionString))
-                    {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, sow_instructions, space_instructions, harvest_instructions, compatible_plants, avoid_instructions, img_url) " +
-                                                        "OUTPUT INSERTED.plant_id " +
-                                                        "VALUES(@plant_name, @sow_instructions, @space_instructions, @harvest_instructions, @compatible_plants, @avoid_instructions, @img_url)", conn);
-                        cmd.Parameters.AddWithValue("@plant_name", entry.Value.Name);
-                        cmd.Parameters.AddWithValue("@sow_instructions", entry.Value.SowInstructions);
-                        cmd.Parameters.AddWithValue("@space_instructions", entry.Value.SpaceInstructions);
-                        cmd.Parameters.AddWithValue("@harvest_instructions", entry.Value.HavestInstructions);
-                        cmd.Parameters.AddWithValue("@compatible_plants", entry.Value.CompatiblePlants);
-                        cmd.Parameters.AddWithValue("@avoid_instructions", entry.Value.AvoidInstructions);
-                        cmd.Parameters.AddWithValue("@img_url", entry.Value.ImageUrl);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT TOP 1 * FROM plants", conn);
 
-                        newPlantId = Convert.ToInt32(cmd.ExecuteScalar());
-                    }
+                    hasRowsreader = cmd.ExecuteReader();
+                    emptyPlantTable = !hasRowsreader.HasRows;
+
+
                 }
-                catch (Exception)
-                {
+            }
+            catch (Exception)
+            {
 
-                    throw;
+                throw;
+            }
+            if (emptyPlantTable)
+            {
+                foreach (KeyValuePair<string, PlantInfo> entry in plantDictionary)
+                {
+                    int newPlantId;
+                    try
+                    {
+                        using (SqlConnection conn = new SqlConnection(connectionString))
+                        {
+                            conn.Open();
+                            SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, sow_instructions, space_instructions, harvest_instructions, compatible_plants, avoid_instructions, img_url) " +
+                                                            "OUTPUT INSERTED.plant_id " +
+                                                            "VALUES(@plant_name, @sow_instructions, @space_instructions, @harvest_instructions, @compatible_plants, @avoid_instructions, @img_url)", conn);
+                            cmd.Parameters.AddWithValue("@plant_name", entry.Value.Name);
+                            cmd.Parameters.AddWithValue("@sow_instructions", entry.Value.SowInstructions);
+                            cmd.Parameters.AddWithValue("@space_instructions", entry.Value.SpaceInstructions);
+                            cmd.Parameters.AddWithValue("@harvest_instructions", entry.Value.HavestInstructions);
+                            cmd.Parameters.AddWithValue("@compatible_plants", entry.Value.CompatiblePlants);
+                            cmd.Parameters.AddWithValue("@avoid_instructions", entry.Value.AvoidInstructions);
+                            cmd.Parameters.AddWithValue("@img_url", entry.Value.ImageUrl);
+
+                            newPlantId = Convert.ToInt32(cmd.ExecuteScalar());
+                        }
+                    }
+                    catch (Exception)
+                    {
+
+                        throw;
+                    }
                 }
             }
         }
@@ -160,11 +205,10 @@ namespace Capstone.DAO
             return listOfLoggedInUsersPlants;
         }
 
-        //method to add to dictionary if doesn't already exist
+        //method to add to dictionary or database if doesn't already exist??
         //method to write to new csv?? vs using database??
 
         private PlantInfo GetPlantInfoFromReader(SqlDataReader reader)
-
         {
             PlantInfo u = new PlantInfo() //-----???????????
 
