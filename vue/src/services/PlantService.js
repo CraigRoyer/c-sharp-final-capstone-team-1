@@ -4,8 +4,11 @@ export default {
   listPlantsByUserId() {
     return axios.get(`/plant`);
   },
+  getPlantByPlantId(plantId) {
+      return axios.get(`/plant/${plantId}`)
+  },
   listAllPlants(){
-      return axios.get(`/all`);
+      return axios.get(`plant/all`);
   },
   create(plant) {
     return axios.post(`/plant/create`, plant);

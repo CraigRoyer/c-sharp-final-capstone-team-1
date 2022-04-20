@@ -27,8 +27,8 @@ namespace Capstone.DAO
                     {
                         conn.Open();
 
-                        SqlCommand cmd = new SqlCommand("SELECT plant_name, cost_per_25_seeds" +
-                                                        "FROM plants WHERE plant_id = @plant_id", conn);
+                        SqlCommand cmd = new SqlCommand("SELECT plant_id, plant_name, cost_per_25_seeds" +
+                                                        " FROM plants WHERE plant_id = @plant_id;", conn);
                         cmd.Parameters.AddWithValue("@plant_id", plantId);
                         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -165,6 +165,7 @@ namespace Capstone.DAO
                 {
                     PlantId = Convert.ToInt32(reader["plant_id"]),
                     Name = Convert.ToString(reader["plant_name"]),
+                    CostPer25Seeds = Convert.ToDecimal(reader["cost_per_25_seeds"])
                 };
 
                 return p;

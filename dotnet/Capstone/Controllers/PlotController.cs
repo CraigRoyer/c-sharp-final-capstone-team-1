@@ -85,9 +85,9 @@ namespace Capstone.Controllers
 
         }
         [HttpPost("{plotId}/plant")]
-        public ActionResult AddPlant(int plantId, int plotId)
+        public ActionResult AddPlantToPlot(int plantId, int plotId)
         {
-            plotDao.AddPlantsToPlot(plantId, plotId);
+            plotDao.AddPlantToPlot(plantId, plotId);
             Plot addedPlot = plotDao.GetPlot(plotId);
             Plant addedPlant = plantDao.GetPlantByPlantId(plantId);
 

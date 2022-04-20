@@ -9,6 +9,6 @@ namespace Capstone.Models
     {
        public int PlantId { get; set; }
        public string Name { get; set; }
-       public int CostPer25Seeds { get; set; }
+       public decimal CostPer25Seeds { get; set; }
     }
 }
