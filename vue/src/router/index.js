@@ -10,6 +10,7 @@ import CreatePlot from '../views/CreatePlot.vue'
 import Plant from '../views/Plant.vue'
 import AllPlants from '../views/AllPlants.vue'
 import AllUsersPlots from '../views/AllUsersPlots.vue'
+import CreatePlant from '../views/CreatePlant.vue'
 
 Vue.use(Router)
 
@@ -78,6 +79,14 @@ const router = new Router({
       path: '/plot/allplots',
       name: 'AllUsersPlots',
       component: AllUsersPlots,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/plant/create',
+      name: 'CreatePlant',
+      component: CreatePlant,
       meta:{
         requiresAuth: false
       }

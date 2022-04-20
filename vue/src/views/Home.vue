@@ -14,6 +14,9 @@
     <h2></h2>
     <router-link :to="{name: 'AllUsersPlots' }"
     > View My Plots </router-link>
+    <h2> </h2>
+      <router-link :to="{ name: 'CreatePlant' }"
+      >Add New Plant</router-link>
   </div>
 </template>
 
