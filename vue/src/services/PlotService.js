@@ -27,7 +27,10 @@ export default {
 
   addPlantToPlot(plantId,plotId){
     return axios.post(`/plot/${plotId}/plant`)
+  },
+  
+  getAllPlantsFromAPlot(plotId) {
+    return axios.get(`/plot/${plotId}`)
   }
 
-  
 }
