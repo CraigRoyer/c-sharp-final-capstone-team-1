@@ -8,6 +8,7 @@ import store from '../store/index'
 import Plot from '../views/Plot.vue'
 import CreatePlot from '../views/CreatePlot.vue'
 
+
 Vue.use(Router)
 
 /**

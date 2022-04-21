@@ -5,6 +5,7 @@ using Capstone.Models;
 using Capstone.Security;
 using Capstone.Security.Models;
 
+
 namespace Capstone.DAO
 {
     public class PlotSqlDao : IPlotDao
@@ -54,7 +55,8 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT TOP 1 plot_name, plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info FROM plot WHERE user_id = @user_id", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT TOP 1 plot_name, plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info " +
+                                                    "FROM plot WHERE user_id = @user_id", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -115,15 +117,15 @@ namespace Capstone.DAO
                 {
                     try
                     {
-                        //Plot plot = new Plot();
-                        //plot.UserId = Convert.ToInt32(reader["user_id"]);//do we need?
-                        //plot.PlotName = Convert.ToString(reader["plotName"]);
-                        //plot.PlotId = Convert.ToInt32(reader["plot_id"]);
-                        //plot.Length = Convert.ToInt32(reader["length"]);
-                        //plot.Width = Convert.ToInt32(reader["width"]);
-                        //plot.SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]);
-                        //plot.Zone = Convert.ToInt32(reader["zone"]);
-                        Plot plot = GetPlotFromReader(reader);
+                        Plot plot = new Plot();
+                        plot.UserId = Convert.ToInt32(reader["user_id"]);//do we need?
+                        plot.PlotName = Convert.ToString(reader["plotName"]);
+                        plot.PlotId = Convert.ToInt32(reader["plot_id"]);
+                        plot.Length = Convert.ToInt32(reader["length"]);
+                        plot.Width = Convert.ToInt32(reader["width"]);
+                        plot.SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]);
+                        plot.Zone = Convert.ToInt32(reader["zone"]);
+                        //Plot plot = GetPlotFromReader(reader);
                         plots.Add(plot);
                     }
                     catch (Exception)

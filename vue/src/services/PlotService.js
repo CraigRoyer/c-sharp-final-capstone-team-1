@@ -4,21 +4,26 @@ export default {
   getTopPlotOnLogin(){
    return axios.get(`/plot`);
   },
-  getPlot(plotId) {
-    return axios.get(`/plot/${plotId}`);
-  },
+  // getPlot(plotId) {
+  //   return axios.get(`/plot/${plotId}`);
+  // },
   
-  create(plot) {
+  savePlotToLoggedInUser(plot) {
     return axios.post(`/plot/create`, plot);
-  },
-  
-  update(plotId, plot) {
-    return axios.put(`/plot/${plotId}`, plot);
-  },
-
-  delete(plotId) {
-    return axios.delete(`/plot/${plotId}`);
   }
+  
+  // update(plotId, plot) {
+  //   return axios.put(`/plot/${plotId}`, plot);
+  // },
+
+
+  // update(plotId, plot) {
+  //   return axios.put(`/plot/${plotId}`, plot);
+  // },
+
+  // delete(plotId) {
+  //   return axios.delete(`/plot/${plotId}`);
+  // }
 
 
 //   getCards(boardID) {
