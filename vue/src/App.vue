@@ -1,5 +1,6 @@
 <template>
   <div id="app"> 
+    <div id="headAndBody">
     <header>
     <div id="nav">
       <div id="links">
@@ -17,6 +18,7 @@
     <router-view />
     </div>
     </body>
+    </div>
     <footer>
     <div id="foota">
       <img src="@/Pictures/FUCK.png" id="flora"/>
@@ -81,6 +83,7 @@ h3 {
 #foota {
   display: flex;
   justify-content: flex-end;
+
 }
 
 h5 {
@@ -90,6 +93,18 @@ h5 {
 #flora {
   width: 50px;
 }
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+
+}
+
+
+
 
 
 
