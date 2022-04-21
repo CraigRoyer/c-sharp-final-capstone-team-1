@@ -46,7 +46,7 @@ namespace Capstone.DAO
             return returnPlant;
         }
 
-        public Plant AddPlant(Plant newPlant)
+        public Plant AddPlantNotInDatabase(Plant newPlant)
         {
             int newPlantId;
             try
@@ -54,7 +54,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, cost_per_25_seeds) " +
+                    SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, cost_per_25_seeds, sow_instructions, space_instructions, harvest_instructions, compatible_lants, avoid_instructions, img_url) " +
                                                     "OUTPUT INSERTED.plant_id" +
                                                     "VALUES(@plant_name)", conn);
                     cmd.Parameters.AddWithValue("@plant_name", newPlant.Name);
