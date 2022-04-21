@@ -108,5 +108,20 @@ button {
   border-radius: 5px;
   transition: 0.2s ease-in;
   cursor: pointer;
+
 }
+
+button:hover {
+  background: #5c3e14;
+  transform: scale(1.3); 
+
+}
+
+.actions { 
+transition: all .6s ease-in-out; 
+}
+
+
+
+
 </style>
