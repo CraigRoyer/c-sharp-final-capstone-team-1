@@ -1,16 +1,16 @@
 <template>
-  <table>
+  <table id="yo">
     <thead>
       <tr>
         <th>&nbsp;</th>
-        <th>Plants</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr v-for="plant in plants" :key="plant.plantId" v-on:click="getPlantByPlantId(plant.plantId)">
-        <td> 
+        <!-- <td> 
           <img :src="plant.image" class="plant-photo"/>
-        </td>
+        </td> -->
         <td class="name">{{ plant.name }}</td>
       </tr>
     </tbody>
@@ -39,3 +39,18 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+table, td{
+  border: 1px solid;
+  width: auto;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+td:hover {
+  background-color: #A4CC4E;
+  }
+
+</style>

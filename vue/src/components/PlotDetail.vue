@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="oh">
     <h1> {{this.plot.plotName}} </h1>
     <p> {{this.plot}}</p>
 
@@ -32,3 +32,13 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#oh {
+  background-color: #C78120;
+  text-align: center;
+  width: 1200px;
+  height: 350px;
+  border-radius: 50%;
+}
+</style>

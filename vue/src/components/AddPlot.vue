@@ -87,10 +87,15 @@ export default {
 <style>
 
 #formy { 
+  width: 700px;
+  height: 700px;
+  background: #af7804;
+  border-radius: 98%;
+  box-shadow: 5px 20px 50px #8e4505;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: center;
 }
 
 button {
@@ -121,6 +126,9 @@ button:hover {
 transition: all .6s ease-in-out; 
 }
 
+.field {
+  font-size: 4.0rem;
+}
 
 
 

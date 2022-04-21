@@ -16,6 +16,7 @@ export default {
 </script>
 
 <style scoped>
+
 body > div > div{
   width: 500px;
   height: 500px;
@@ -26,7 +27,8 @@ body > div > div{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
+   
 }
 
 body > div > div > div > form {
@@ -35,9 +37,7 @@ body > div > div > div > form {
   
 }
 
-body > div > div > div {
-  
-}
+
 
 
 

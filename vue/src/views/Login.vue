@@ -31,8 +31,8 @@
         v-model="user.password"
         required
       />
-      <label for="chk" class="grow">
-        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <label id="need" for="chk" class="grow">
+        <router-link  :to="{ name: 'register' }">Need an account?</router-link>
       </label>
       <button type="submit" class="grow">Sign in</button>
     </form>
