@@ -49,10 +49,10 @@ namespace Capstone.Controllers
 
 
             [HttpPost("create")]
-            public ActionResult<Plant> AddPlant(Plant plant)
+            public ActionResult<Plant> AddPlantNotInDatabase(Plant plant)
             {
                 int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
-                Plant newPlant = plantDao.AddPlant(plant);
+                Plant newPlant = plantDao.AddPlantNotInDatabase(plant);
 
                 if (newPlant != null)
                 {
