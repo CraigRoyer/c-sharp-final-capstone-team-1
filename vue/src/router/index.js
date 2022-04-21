@@ -7,6 +7,11 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Plot from '../views/Plot.vue'
 import CreatePlot from '../views/CreatePlot.vue'
+import Plant from '../views/Plant.vue'
+import AllPlants from '../views/AllPlants.vue'
+import AllUsersPlots from '../views/AllUsersPlots.vue'
+import CreatePlant from '../views/CreatePlant.vue'
+
 
 
 Vue.use(Router)
@@ -67,7 +72,42 @@ const router = new Router({
     {
       path: '/plot/create',
       name: 'CreatePlot',
-      component: CreatePlot
+      component: CreatePlot,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/plot/allplots',
+      name: 'AllUsersPlots',
+      component: AllUsersPlots,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/plant/create',
+      name: 'CreatePlant',
+      component: CreatePlant,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/plant/:plantId',
+      name: 'Plant',
+      component: Plant,
+      meta:{
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/plant/all',
+      name: 'AllPlants',
+      component: AllPlants,
+      meta:{
+        requiresAuth: false
+      }
     },
   ]
 })

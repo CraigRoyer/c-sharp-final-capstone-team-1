@@ -1,5 +1,10 @@
 <template>
-  <div id="register" class="text-center">
+<div id="allPages" class="columnBoth">
+  <div id="aboutGardn" class="columnOne">
+    <h1>About the</h1>
+    </div>
+ 
+  <div id="register" class="login">
     <form class="form-register" @submit.prevent="register">
       <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
@@ -15,6 +20,7 @@
         required
         autofocus
       />
+      
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -37,6 +43,7 @@
         Create Account
       </button>
     </form>
+  </div>
   </div>
 </template>
 
@@ -90,4 +97,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+body {
+  background: linear-gradient(90deg, #fcff9e 0%, #c67700 100%);
+background-position: fixed;
+white-space: nowrap;
+}
+
+
+</style>
