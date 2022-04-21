@@ -118,12 +118,12 @@ namespace Capstone.DAO
                     {
                         Plot plot = new Plot();
                         plot.UserId = Convert.ToInt32(reader["user_id"]);//do we need?
-                        plot.PlotName = Convert.ToString(reader["plotName"]);
-                        plot.PlotId = Convert.ToInt32(reader["plot_id"]);
-                        plot.Length = Convert.ToInt32(reader["length"]);
-                        plot.Width = Convert.ToInt32(reader["width"]);
+                        plot.PlotName = Convert.ToString(reader["plot_name"]);
+                        plot.PlotId = Convert.ToInt32(reader["plot_id_number"]);
+                        plot.Length = Convert.ToInt32(reader["plot_length"]);
+                        plot.Width = Convert.ToInt32(reader["plot_width"]);
                         plot.SunExposure = Convert.ToInt32(reader["sun_exposure_hours"]);
-                        plot.Zone = Convert.ToInt32(reader["zone"]);
+                        plot.Zone = Convert.ToInt32(reader["zone_info"]);
                         //Plot plot = GetPlotFromReader(reader);
                         plots.Add(plot);
                     }

@@ -16,11 +16,13 @@ namespace Capstone.Controllers
         private readonly IPlotDao plotDao;
         private readonly IUserDao userDao;
         private readonly IPlantInfoDao plantInfoDao;
+        private readonly IPlantDao plantDao;
 
-        public PlotController(IPlotDao _plotDao, IUserDao _userDao, IPlantInfoDao _plantInfoDao)
+        public PlotController(IPlotDao _plotDao, IUserDao _userDao, IPlantInfoDao _plantInfoDao, IPlantDao _plantDao)
         {
             plotDao = _plotDao;
             userDao = _userDao;
+            plantDao = _plantDao;
             plantInfoDao = _plantInfoDao;
         }
 
