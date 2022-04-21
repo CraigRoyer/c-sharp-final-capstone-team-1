@@ -84,6 +84,24 @@ namespace Capstone.Controllers
             }
 
         }
+        [HttpPost("{plotId}/plant")]
+        public ActionResult AddPlantToPlot(int plantId, int plotId)
+        {
+            plotDao.AddPlantToPlot(plantId, plotId);
+            Plot addedPlot = plotDao.GetPlot(plotId);
+            Plant addedPlant = plantDao.GetPlantByPlantId(plantId);
+
+            if (addedPlot != null && addedPlant != null)
+            {
+                return Accepted();
+                //values aren't read on client
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
     }
 }
 

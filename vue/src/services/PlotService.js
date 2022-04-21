@@ -4,37 +4,30 @@ export default {
   getTopPlotOnLogin(){
    return axios.get(`/plot`);
   },
-  // getPlot(plotId) {
-  //   return axios.get(`/plot/${plotId}`);
-  // },
-  
-  savePlotToLoggedInUser(plot) {
+
+  getPlot(plotId) {
+    return axios.get(`/plot/${plotId}`);
+  },
+
+  getAllPlots() {
+    return axios.get(`/plot/allplots`);
+  },
+
+  create(plot) {
     return axios.post(`/plot/create`, plot);
+  },
+
+  update(plotId, plot) {
+    return axios.put(`/plot/${plotId}`, plot);
+  },
+
+  delete(plotId) {
+    return axios.delete(`/plot/${plotId}`);
+  },
+
+  addPlantToPlot(plantId,plotId){
+    return axios.post(`/plot/${plotId}/plant`)
   }
+
   
-  // update(plotId, plot) {
-  //   return axios.put(`/plot/${plotId}`, plot);
-  // },
-
-
-  // update(plotId, plot) {
-  //   return axios.put(`/plot/${plotId}`, plot);
-  // },
-
-  // delete(plotId) {
-  //   return axios.delete(`/plot/${plotId}`);
-  // }
-
-
-//   getCards(boardID) {
-//     return http.get(`/boards/${boardID}`)
-//  we're gonna need this },
-
-//   getCard(boardID, cardID) {
-//     return http.get(`/boards/${boardID}`).then((response) => {
-//       const cards = response.data.cards;
-//       return cards.find(card => card.id == cardID);
-//     })
-//   }
-
 }

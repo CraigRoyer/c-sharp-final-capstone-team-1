@@ -1,7 +1,8 @@
 <template>
 <div>
-    <h1> This Plot </h1>
-    <p> {{plot}}</p>
+    <h1> {{this.plot.plotName}} </h1>
+    <p> {{this.plot}}</p>
+
 </div>
 </template>
 
@@ -13,18 +14,18 @@ export default {
   data() {
     return {
       plot: {
-         PlotName:'',
-        Length:0,
-        Width:0,
-        SunExposure:0,
-        Zone:0,
-        PlotId:0,
-        UserId:0,
+        plotName:'',
+        length:0,
+        width:0,
+        sunExposure:0,
+        zone:0,
+        plotId:0,
+        userId:0,
       }
     };
   },
   created() {
-      plotService.getTopPlotOnLogin().then((response) => {
+      plotService.getPlot(this.$route.params.plotId).then((response) => {
           this.plot = response.data;
           
       });

@@ -55,8 +55,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT TOP 1 plot_name, plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info " +
-                                                    "FROM plot WHERE user_id = @user_id", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT TOP 1 plot_name, plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info FROM plot WHERE user_id = @user_id ORDER BY plot_id_number DESC;", conn);
                     cmd.Parameters.AddWithValue("@user_id", userId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -109,7 +108,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(@"SELECT plot_name, plot_id_number, plot_length, plot_width, zone_info, sun_exposure_hours
+                SqlCommand cmd = new SqlCommand(@"SELECT plot.user_id, plot_name, plot_id_number, plot_length, plot_width, zone_info, sun_exposure_hours
                                                 FROM plot JOIN users ON users.user_id = plot.user_id WHERE users.user_id = @user_id", conn);
                 cmd.Parameters.AddWithValue("@user_id", userId);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -137,6 +136,25 @@ namespace Capstone.DAO
                 return plots;
             }
             
+        }
+        public Plot AddPlantToPlot(int plantId, int plotId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO plot_plants" +
+                                                    "VALUES(@plant_id, @plot_id)", conn);
+                    cmd.Parameters.AddWithValue("@plant_id", plantId);
+                    cmd.Parameters.AddWithValue("@plot_id", plotId);
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            return GetPlot(plotId);
         }
 
         private Plot GetPlotFromReader(SqlDataReader reader)
