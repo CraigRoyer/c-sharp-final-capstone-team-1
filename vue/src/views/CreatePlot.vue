@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import CreatePlot from '../components/AddPlot.vue';
+import CreatePlot from '../components/CreatePlot.vue';
 
 export default {
   components: {

@@ -47,7 +47,7 @@ export default {
     };
   },
   methods: {
-    saveDocument() {
+    savePlot() {
       this.plot.Length = parseInt(this.plot.Length);
       this.plot.Width = parseInt(this.plot.Width);
       this.plot.SunExposure = parseInt(this.plot.SunExposure);
@@ -55,7 +55,7 @@ export default {
       PlotService.create(this.plot)
         .then((response) => {
           if (response.status === 201) {
-            this.$router.push("/");
+            this.$router.push("/plot");
           }
         })
         .catch((error) => {
@@ -63,7 +63,7 @@ export default {
         });
     },
     cancel() {
-      this.$router.push("/");
+      this.$router.push("/plot");
     },
   },
 };
