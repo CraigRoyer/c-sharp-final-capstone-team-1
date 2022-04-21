@@ -41,6 +41,12 @@ namespace Capstone.Controllers
             return plantDao.ListPlantsByUserId(userId);
             }
 
+            [HttpGet]
+            public ActionResult<List<Plant>> ListPlantsByPlotId(int plotId) //-------------------------GET PLANTS BY PLOT
+            {
+            return plantDao.ListPlantsByPlotId(plotId);   
+            }
+
             [HttpGet("all")]
             public ActionResult<List<Plant>> ListAllPlants()
             {

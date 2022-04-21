@@ -143,7 +143,7 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO plot_plants" +
+                    SqlCommand cmd = new SqlCommand(@"INSERT INTO plot_plants" +
                                                     "VALUES(@plant_id, @plot_id)", conn);
                     cmd.Parameters.AddWithValue("@plant_id", plantId);
                     cmd.Parameters.AddWithValue("@plot_id", plotId);
@@ -154,6 +154,37 @@ namespace Capstone.DAO
                 throw;
             }
             return GetPlot(plotId);
+        }
+
+        public List<PlantInfo> GetAllPlantsFromAPlot(int plotId)
+        {
+            List<PlantInfo> listOfAllPlantsInASinglePlot = new List<PlantInfo>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM plants " +
+                                                    "JOIN plot_plants ON plot_plants.plant_id = plants.plant_id " +
+                                                    "WHERE plot_id_number = @plot_id_number", conn);
+                    cmd.Parameters.AddWithValue("@plot_id_number", plotId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        PlantInfo plant = GetPlantInfoFromReader(reader);
+                        listOfAllPlantsInASinglePlot.Add(plant);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return listOfAllPlantsInASinglePlot;
         }
 
         private Plot GetPlotFromReader(SqlDataReader reader)
@@ -170,6 +201,23 @@ namespace Capstone.DAO
             };
 
             return p;
+        }
+
+        private PlantInfo GetPlantInfoFromReader(SqlDataReader reader)
+        {
+            PlantInfo u = new PlantInfo() //-----???????????
+
+            {
+                Name = Convert.ToString(reader["plant_name"]),
+                SowInstructions = Convert.ToString(reader["sow_instructions"]),
+                SpaceInstructions = Convert.ToString(reader["space_instructions"]),
+                HavestInstructions = Convert.ToString(reader["harvest_instructions"]),
+                CompatiblePlants = Convert.ToString(reader["compatible_plants"]),
+                AvoidInstructions = Convert.ToString(reader["avoid_instructions"]),
+                ImageUrl = Convert.ToString(reader["img_url"])
+            };
+
+            return u;
         }
     }
 }

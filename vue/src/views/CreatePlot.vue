@@ -1,16 +1,16 @@
 <template>
   <div>
     <h1>Create Plot</h1>
-    <add-plot class="create"/>
+    <create-plot />
   </div>
 </template>
 
 <script>
-import AddPlot from '../components/AddPlot.vue';
+import CreatePlot from '../components/AddPlot.vue';
 
 export default {
   components: {
-    AddPlot
+    CreatePlot
   }
 };
 </script>

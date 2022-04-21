@@ -107,7 +107,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(@"SELECT plant_name
+                SqlCommand cmd = new SqlCommand(@"SELECT *
                                                         FROM plants 
                                                         JOIN plot_plants ON plants.plant_id = plot_plants.plant_id
                                                         JOIN plot ON plot.plot_id = plot_plants.plot_id

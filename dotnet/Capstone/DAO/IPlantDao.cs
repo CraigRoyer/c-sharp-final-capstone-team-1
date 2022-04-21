@@ -10,7 +10,7 @@ namespace Capstone.DAO
     {
         Plant GetPlantByPlantId(int plantId);
         //Plant AddPlant(Plant plant);
-        List<Plant> ListPlantsByUserId(int userId);
+        List<Plant> ListPlantsByUserId(int userId);  
         List<Plant> ListPlantsByPlotId(int plotId);
 
         List<Plant> ListAllPlants();

@@ -48,7 +48,7 @@ namespace Capstone.Controllers
         }
 
 
-        [HttpGet]
+        [HttpGet()]
         public ActionResult<Plot> GetPlotByUserId()
         {
             int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
@@ -104,6 +104,17 @@ namespace Capstone.Controllers
                 return NotFound();
             }
 
+        }
+
+        [HttpGet("/plot/{plotId}")]
+        public ActionResult<List<PlantInfo>> GetAllPlantsFromAPlot(int plotId)
+        {
+            Plot refPlot = plotDao.GetPlot(plotId);
+            if (refPlot == null)
+            {
+                return NotFound();
+            }
+            return plotDao.GetAllPlantsFromAPlot(plotId);
         }
     }
 }
