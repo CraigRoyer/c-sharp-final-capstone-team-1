@@ -18,7 +18,7 @@ namespace Capstone.Controllers
 
         public PlotController(IPlotDao _plotDao, IUserDao _userDao)
         {
-            plotDao = _plotdao;
+            plotDao = _plotDao;
             userDao = _userDao;
         }
 

@@ -3,7 +3,6 @@
     <h1>My Plot</h1>
     <create-plot/>
 
-  <div class ="home">
     <h1>My Top Garden Plot</h1>
     <plot-detail v-bind:plotId='$route.params.plotId'/>
 
@@ -26,3 +25,7 @@ export default {
 
 };
 </script>
+
+<style scoped>
+
+</style>
