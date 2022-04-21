@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>My Plots</h1>
+    <h1 id="allPlots">My Plots</h1>
     <plot-list />
   </div>
 </template>
@@ -14,3 +14,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+#allPlots {
+  display: flex;
+  margin-left: 5px;
+  padding-left: 120px;
+}
+</style>

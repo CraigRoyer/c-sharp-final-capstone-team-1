@@ -41,6 +41,12 @@ namespace Capstone.Controllers
             return plantDao.ListPlantsByUserId(userId);
             }
 
+            [HttpGet]
+            public ActionResult<List<Plant>> ListPlantsByPlotId(int plotId) //-------------------------GET PLANTS BY PLOT
+            {
+            return plantDao.ListPlantsByPlotId(plotId);   
+            }
+
             [HttpGet("all")]
             public ActionResult<List<Plant>> ListAllPlants()
             {
@@ -49,10 +55,10 @@ namespace Capstone.Controllers
 
 
             [HttpPost("create")]
-            public ActionResult<Plant> AddPlant(Plant plant)
+            public ActionResult<Plant> AddPlantNotInDatabase(Plant plant)
             {
                 int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
-                Plant newPlant = plantDao.AddPlant(plant);
+                Plant newPlant = plantDao.AddPlantNotInDatabase(plant);
 
                 if (newPlant != null)
                 {

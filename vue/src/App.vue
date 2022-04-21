@@ -1,10 +1,11 @@
 <template>
   <div id="app"> 
+    <div id="headAndBody">
     <header>
     <div id="nav">
       <div id="links">
-      <router-link v-bind:to="{ name: 'home' }">Home </router-link>&nbsp;| &nbsp;
-      <router-link v-bind:to="{ name: 'logout' }">Logout</router-link>  
+      <router-link class="holo" v-bind:to="{ name: 'home' }">Home </router-link>&nbsp;| &nbsp;
+      <router-link class="holo"  v-bind:to="{ name: 'logout' }">Logout</router-link>  
       </div> 
       <div id="logoDiv">
         <h3>Welcome to the... </h3>
@@ -17,10 +18,11 @@
     <router-view />
     </div>
     </body>
+    </div>
     <footer>
     <div id="foota">
-      <img src="@/Pictures/FUCK.png" id="flora"/>
-      <h5>Brought to you by the wonderful Team Circumflex</h5>&nbsp; <img src="@/Pictures/FUCK.png" id="flora"/>
+      <img src="@/Pictures/floweraf.png" id="flora"/>
+      <h5>Brought to you by the wonderful Team Circumflex</h5>&nbsp; <img src="@/Pictures/floweraf.png" id="flora"/>
       </div>
       </footer>
   </div>
@@ -81,6 +83,7 @@ h3 {
 #foota {
   display: flex;
   justify-content: flex-end;
+
 }
 
 h5 {
@@ -90,6 +93,22 @@ h5 {
 #flora {
   width: 50px;
 }
+
+#app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+
+}
+
+.holo {
+  
+  color: #086320;
+  text-decoration: none;
+}
+
 
 
 

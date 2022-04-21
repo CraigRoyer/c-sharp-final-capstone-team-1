@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Plants</h1>
+  <div id="allplants">
+    <h1 id="plants">Plants</h1>
     <plant-list />
   </div>
 </template>
@@ -14,3 +14,12 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+#plants {
+  display: flex;
+  margin-left: 5px;
+  padding-left: 120px;
+}
+</style>

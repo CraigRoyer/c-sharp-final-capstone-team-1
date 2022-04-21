@@ -3,14 +3,14 @@
     <thead>
       <tr>
         <th>&nbsp;</th>
-        <th>My Plots</th>
+        
       </tr>
     </thead>
     <tbody>
       <tr v-for="plot in plots" :key="plot.plotId" v-on:click="getPlot(plot.plotId)">
-        <td class="PlotName">{{ plot.plotName }} Test</td>
-        <td class="PlotId">{{ plot.plotId }}Plot Id</td>
-        <td class="PlotZone">{{ plot.zone }} Zone</td>
+        <td class="PlotName">Plot Name: {{ plot.plotName }}</td>
+        <td class="PlotId">Plot Id: {{ plot.plotId }}</td>
+        <td class="PlotZone">Plot Zone: {{ plot.zone }}</td>
       </tr>
     </tbody>
   </table>
@@ -38,3 +38,17 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+table, td{
+  border: 1px solid;
+  width: auto;
+  padding: 20px;
+  text-align: center;
+  
+}
+
+td:hover {
+  background-color: #A4CC4E;
+  }
+</style>

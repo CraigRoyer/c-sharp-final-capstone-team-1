@@ -1,30 +1,34 @@
 <template>
-   <div class="createNewPlot">
-    <h1>Create a new plot:</h1>
-    <form v-on:submit.prevent>
-            <label for="name">Plot Name:</label><br/>
-            <input v-model="plot.plotName" name="name" type="text">
-            <br/><br/>
-            <label for="length">Length:</label><br/>
-            <input v-model="plot.lengths" name="number" type="number" min="1">
-            <br/><br/>
-            <label for="width">Width:</label><br/>
-            <input v-model="plot.width" name="number" type="number" min="1">
-            <br/><br/>
-            <label for="sun">Hours of Sun Exposure:</label><br/>
-            <input v-model="plot.sunExposure" type="number" min="1" max="24">
-            <br /><br/>
-            <label for="zone">Zone:</label><br/>
-            <input v-model="plot.zoneInfo" type="number" min="1" max="10">
-            <br/><br/>
-            <label for="color">What color would you like your plot?</label><br/>
-            <input v-model="plot.plotColor" name="color" type="color">
-            <br/><br/>
-            <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
-            <button type="submit" v-on:click="saveDocument()">Submit</button>
+<div id="wholeField">
+      <form v-on:submit.prevent>
+          <div class="field">
+            <label for="plotName">Plot Name:</label>
+            <input type="text" v-model="plot.PlotName" />
+            </div>
+            <div class="field">
+            <label for="length">Length:</label>
+            <input type="number" v-model="plot.Length" />
+            </div>
+            <div class = "field">
+            <label for="width">Width:</label>
+            <input type="number" v-model="plot.Width" />
+            </div>
+            <div class="field">
+            <label for="sunExposure">Hours of Sun Exposure:</label>
+            <input type="number" v-model="plot.SunExposure" />
+            </div>
+            <div class ="field">
+            <label for="zone">Zone:</label>
+            <input type="number" v-model="plot.Zone" />
+            </div>
+    <div class="actions">
+      <button type="button" v-on:click="cancel()">Cancel</button>&nbsp;
+      <button type="submit" v-on:click="savePlot()">Save Plot</button>
+    </div>
         </form>
-  </div> 
+        </div>
 </template>
+
 
 <script>
 import PlotService from "../services/PlotService";
@@ -34,36 +38,53 @@ export default {
   data() {
     return {
       plot: {
-          plotId:null,
-          userId:null,
-          lengths:null,
-          width:null,
-          sunExposure:null,
-          zoneInfo:null,
-          plotName:''
-      }
+        PlotName: "",
+        Length: 0,
+        Width: 0,
+        SunExposure: 0,
+        Zone: 0,
+      },
     };
   },
   methods: {
-    saveDocument() {
-      PlotService
-        .create(this.plot)
-        .then(response => {
+    savePlot() {
+      this.plot.Length = parseInt(this.plot.Length);
+      this.plot.Width = parseInt(this.plot.Width);
+      this.plot.SunExposure = parseInt(this.plot.SunExposure);
+      this.plot.Zone = parseInt(this.plot.Zone);
+      PlotService.create(this.plot)
+        .then((response) => {
           if (response.status === 201) {
-            this.$router.push("/");
+            this.$router.push("/plot");
           }
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
         });
     },
     cancel() {
-      this.$router.push("/");
-    }
-  }
+      this.$router.push("/plot");
+    },
+  },
 };
 </script>
 
+
+
+
+
+
 <style scoped>
 
-</style>
+.field {
+  width: 700px;
+  height: 700px;
+  margin: auto;
+  background: #af7804;
+  border-radius: 98%;
+  box-shadow: 5px 20px 50px #8e4505;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

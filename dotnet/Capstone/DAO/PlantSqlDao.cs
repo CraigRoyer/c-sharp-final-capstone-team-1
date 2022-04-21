@@ -46,7 +46,7 @@ namespace Capstone.DAO
             return returnPlant;
         }
 
-        public Plant AddPlant(Plant newPlant)
+        public Plant AddPlantNotInDatabase(Plant newPlant)
         {
             int newPlantId;
             try
@@ -55,10 +55,11 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, cost_per_25_seeds) " +
-                                                    "OUTPUT INSERTED.plant_id" +
-                                                    "VALUES(@plant_name)", conn);
+                                                    "OUTPUT INSERTED.plant_id " +
+                                                    "VALUES(@plant_name, @cost_per_25_seeds)", conn);
                     cmd.Parameters.AddWithValue("@plant_name", newPlant.Name);
                     cmd.Parameters.AddWithValue("@cost_per_25_seeds", newPlant.CostPer25Seeds);
+
                     newPlantId = Convert.ToInt32(cmd.ExecuteScalar());
                 }
             }
@@ -107,7 +108,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(@"SELECT plant_name
+                SqlCommand cmd = new SqlCommand(@"SELECT *
                                                         FROM plants 
                                                         JOIN plot_plants ON plants.plant_id = plot_plants.plant_id
                                                         JOIN plot ON plot.plot_id = plot_plants.plot_id
