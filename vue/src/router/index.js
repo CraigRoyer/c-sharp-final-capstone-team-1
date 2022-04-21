@@ -13,6 +13,7 @@ import AllUsersPlots from '../views/AllUsersPlots.vue'
 import CreatePlant from '../views/CreatePlant.vue'
 
 
+
 Vue.use(Router)
 
 /**

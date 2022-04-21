@@ -27,8 +27,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT plot_id_number, user_id, plot_width, plot_length, sun_exposure_hours, zone_info, plot_name " +
-                                                    "FROM plot WHERE plot_id_number = @plot_id_number", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT plot_id_number, user_id, plot_length, plot_width, sun_exposure_hours, zone_info, plot_name FROM plot WHERE plot_id_number = @plot_id_number", conn);
                     cmd.Parameters.AddWithValue("@plot_id_number", plotId);
                     SqlDataReader reader = cmd.ExecuteReader();
 

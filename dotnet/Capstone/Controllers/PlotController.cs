@@ -9,7 +9,7 @@ using System.Security.Claims;
 
 namespace Capstone.Controllers
 {
-    [Route("[controller]")]
+    [Route("plot")]
     [ApiController]
     public class PlotController : ControllerBase
     {
@@ -26,6 +26,7 @@ namespace Capstone.Controllers
             plantInfoDao = _plantInfoDao;
         }
 
+
         [HttpGet("{plotId}")]
         public ActionResult<Plot> GetPlotByPlotId(int plotId)
         {
@@ -37,7 +38,7 @@ namespace Capstone.Controllers
                 //return plot;
                 return Ok(plot);
             }
-            else return NotFound();
+            else return StatusCode(420);
         }
         [HttpGet("plots")]
         public ActionResult<List<Plot>> ListPlotsById(int userId)

@@ -29,5 +29,10 @@ export default {
     TopPlotDetail,
     
   }
+
 };
 </script>
+
+<style scoped>
+
+</style>
