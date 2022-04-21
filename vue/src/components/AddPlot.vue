@@ -1,6 +1,6 @@
 <template>
 <div>
-      <form v-on:submit.prevent>
+      <form id="formy" v-on:submit.prevent>
           <div class="field">
             <label for="plotName">Plot Name:</label>
             <input type="text" v-model="plot.PlotName" />
@@ -83,3 +83,30 @@ export default {
 };
 </script>
 
+
+<style>
+
+#formy { 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+button {
+  width: 100%;
+  height: 30px;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #d1965e;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 8px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+</style>

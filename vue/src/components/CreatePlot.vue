@@ -1,5 +1,5 @@
 <template>
-<div>
+<div id="wholeField">
       <form v-on:submit.prevent>
           <div class="field">
             <label for="plotName">Plot Name:</label>
@@ -69,5 +69,22 @@ export default {
 };
 </script>
 
+
+
+
+
+
 <style scoped>
-</style>
+
+.field {
+  width: 700px;
+  height: 700px;
+  margin: auto;
+  background: #af7804;
+  border-radius: 98%;
+  box-shadow: 5px 20px 50px #8e4505;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

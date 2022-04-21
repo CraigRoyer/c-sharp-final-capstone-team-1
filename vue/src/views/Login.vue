@@ -1,8 +1,7 @@
 <template>
   <div id="main" class="login">
     <form class="form-signin" @submit.prevent="login">
-      <h2>PLEASE SIGN IN</h2>
-
+      
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username and password!
       </div>
@@ -32,10 +31,10 @@
         v-model="user.password"
         required
       />
-      <label for="chk" aria-hidden="true">
+      <label for="chk" class="grow">
         <router-link :to="{ name: 'register' }">Need an account?</router-link>
       </label>
-      <button type="submit">Sign in</button>
+      <button type="submit" class="grow">Sign in</button>
     </form>
   </div>
 </template>
@@ -176,27 +175,21 @@ body {
   min-height: 100vh;
 }
 
-h2 {
-  text-align: center;
-  color:green
-}
 #main {
-  width: 650px;
-  height: 650px;
+  width: 700px;
+  height: 700px;
   margin: auto;
   background: #af7804;
   border-radius: 98%;
   box-shadow: 5px 20px 50px #8e4505;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 #main > form {
-	
-	width: 500px;
-
+  width: 500px;
 }
 label {
   color: #fff;
@@ -207,11 +200,15 @@ label {
   font-weight: bold;
   transition: 0.5s ease-in-out;
 }
-#main > form > label:nth-child(6) {
-  font-size: 1.5rem;
+#main > form > .sr-only {
+  font-size: 4.0rem;
 }
-#main > form > label:nth-child(1) {
-  font-size: 4rem;
+
+#main > form > label:nth-child(5)
+{
+	font-size: 1.0rem;
+	color: rgb(38, 180, 38);
+	
 }
 input {
   width: 60%;
@@ -226,7 +223,7 @@ input {
   border-radius: 5px;
 }
 button {
-  width: 60%;
+  width: 40%;
   height: 40px;
   margin: 10px auto;
   justify-content: center;
@@ -244,8 +241,17 @@ button {
 }
 button:hover {
   background: #5c3e14;
+  
 }
 .login label {
   color: #5c3e14;
 }
+.grow { 
+transition: all .6s ease-in-out; 
+}
+
+.grow:hover { 
+transform: scale(1.3); 
+}
+
 </style>

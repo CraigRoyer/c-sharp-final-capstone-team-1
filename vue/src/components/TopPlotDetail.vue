@@ -1,6 +1,16 @@
 <template>
-<div>
-    <p> {{plot}}</p>
+<div class="topPlot">
+  <p>🏵️</p>
+  <h2>Plot Name: {{plot.plotName}}</h2>&nbsp;
+  <p>🏵️</p>
+    <p> Plot Length: {{plot.length}} feet</p>&nbsp;
+    <p>🏵️</p>
+    <p> Plot Width: {{plot.width}} feet</p>&nbsp;
+    <p>🏵️</p>
+    <p> Sun Exposure: {{plot.sunExposure}} hours</p>&nbsp;
+    <p>🏵️</p>
+    <p> Zone: {{plot.zone}} </p>
+    <p>🏵️</p>
 </div>
 </template>
 
@@ -30,3 +40,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+
+#flora {
+ width: 50px;
+ height: auto; 
+}
+</style>
