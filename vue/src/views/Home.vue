@@ -24,12 +24,34 @@
       <router-link class="navLinks" :to="{ name: 'CreatePlant' }"
       >Add New Plant</router-link>
       </div>
+  <div>
+    <div class="weatherWidget" ></div>
+
+</div>
   </div>
 </template>
 
 <script>
 import TopPlotDetail from '../components/TopPlotDetail.vue';
 
+   window.weatherWidgetConfig =  window.weatherWidgetConfig || [];
+   window.weatherWidgetConfig.push({
+       selector:".weatherWidget",
+       apiKey:"8W8463BUE2J7NQ5ZH8WAVGXNJ", 
+       location:"", 
+       unitGroup:"us",
+       forecastDays:5, 
+       title:"",
+       showTitle:true, 
+       showConditions:true
+   });
+  
+   (function() {
+   var d = document, s = d.createElement('script');
+   s.src = 'https://www.visualcrossing.com/widgets/forecast-simple/weather-forecast-widget-simple.js';
+   s.setAttribute('data-timestamp', +new Date());
+   (d.head || d.body).appendChild(s);
+   })();
 
 export default {
   components: {

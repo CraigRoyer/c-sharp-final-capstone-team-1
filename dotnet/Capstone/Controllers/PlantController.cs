@@ -41,7 +41,7 @@ namespace Capstone.Controllers
             return plantDao.ListPlantsByUserId(userId);
             }
 
-            [HttpGet]
+            [HttpGet("in/{plotId}")]
             public ActionResult<List<Plant>> ListPlantsByPlotId(int plotId) //-------------------------GET PLANTS BY PLOT
             {
             return plantDao.ListPlantsByPlotId(plotId);   
@@ -71,6 +71,25 @@ namespace Capstone.Controllers
                 }
 
             }
+        [HttpPost("add/{plantId}")]
+        public ActionResult AddPlantToNewestPlot(int plantId)
+        {
+            int userId = Convert.ToInt32(User.FindFirst("sub")?.Value);
+            plantDao.AddPlantToNewestPlot(plantId, userId);
+
+            Plant addedPlant = plantDao.GetPlantByPlantId(plantId);
+
+            if (addedPlant != null)
+            {
+                return Accepted();
+                //values aren't read on client
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
     }
 }
 

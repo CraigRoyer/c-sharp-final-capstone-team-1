@@ -16,6 +16,8 @@ namespace Capstone.DAO
         List<Plant> ListAllPlants();
         Plant AddPlantNotInDatabase(Plant newPlant);
 
+        Plant AddPlantToNewestPlot(int plantId, int userId);
+
 
     }
 }

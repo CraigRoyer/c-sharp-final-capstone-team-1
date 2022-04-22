@@ -20,8 +20,12 @@ export default {
 
   delete(plantId) {
     return axios.delete(`/plant/${plantId}`);
-  }
-
-
+  },
+  addPlantToNewestPlot(plantId){
+    return axios.post(`/plant/add/${plantId}`)
+  },
+getPlantsByPlotId(plotId){
+  return axios.get(`/plant/in/${plotId}`)
+}
 
 }
