@@ -1,37 +1,36 @@
 import axios from 'axios';
 
-const http = axios.create({
-  baseURL: "http://localhost:3000"
-});
-
 export default {
+  getTopPlotOnLogin(){
+   return axios.get(`/plot`);
+  },
 
   getPlot(plotId) {
-    return http.get(`https://localhost:44315/plot/${plotId}`);
+    return axios.get(`/plot/${plotId}`);
   },
-  
+
+  getAllPlots() {
+    return axios.get(`/plot/allplots`);
+  },
+
   create(plot) {
-    return http.post(`/plot/create`, plot);
+    return axios.post(`/plot/create`, plot);
   },
 
   update(plotId, plot) {
-    return http.put(`/plot/${plotId}`, plot);
+    return axios.put(`/plot/${plotId}`, plot);
   },
 
   delete(plotId) {
-    return http.delete(`/plot/${plotId}`);
+    return axios.delete(`/plot/${plotId}`);
+  },
+
+  addPlantToPlot(plantId,plotId){
+    return axios.post(`/plot/${plotId}/plant`)
+  },
+  
+  getAllPlantsFromAPlot(plotId) {
+    return axios.get(`/plot/${plotId}`)
   }
-
-
-//   getCards(boardID) {
-//     return http.get(`/boards/${boardID}`)
-//  we're gonna need this },
-
-//   getCard(boardID, cardID) {
-//     return http.get(`/boards/${boardID}`).then((response) => {
-//       const cards = response.data.cards;
-//       return cards.find(card => card.id == cardID);
-//     })
-//   }
 
 }
