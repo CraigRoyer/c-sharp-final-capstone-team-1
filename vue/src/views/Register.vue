@@ -1,10 +1,29 @@
 <template>
 <div id="allPages" class="columnBoth">
-  
+      <h1 id="createAcc" class="pulse">
+<span class="emoji">🌻</span>
+<span class="c1">C</span>
+<span class="c2">R</span>
+<span class="c3">E</span>
+<span class="c4">A</span>
+<span class="c5">T</span>
+<span class="c6">E</span>
+<span class="emoji">🌻</span>
+<span class="c7">A</span>
+<span class="c8">C</span>
+<span class="c9">C</span>
+<span class="c10">O</span>
+<span class="c11">U</span>
+<span class="c12">N</span>
+<span class="c13">T</span>
+<span class="emoji">🌻</span>
+<br>
+<br>
+</h1>
  
   <div id="register" class="login">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -110,9 +129,9 @@ body {
   min-height: 100vh;
 }
 
-#register {
-  width: 700px;
-  height: 700px;
+#allPages {
+  width: 650px;
+  height: 650px;
   margin: auto;
   background: #af7804;
   border-radius: 98%;
@@ -123,7 +142,7 @@ body {
   justify-content: center;
 }
 
-#register > form {
+#allPages > form {
   width: 500px;
 }
 label {
@@ -135,18 +154,18 @@ label {
   font-weight: bold;
   transition: 0.5s ease-in-out;
 }
-#register > form > .sr-only {
+#allPages > form > .sr-only {
   font-size: 4.0rem;
 }
 
-#register > form > label:nth-child(5)
+#allPages > form > label:nth-child(5)
 {
 	font-size: 1.0rem;
 	color: rgb(38, 180, 38);
 	
 }
 input {
-  width: 60%;
+  width: 100%;
   height: 20px;
   background: #e0dede;
   justify-content: center;
@@ -158,9 +177,9 @@ input {
   border-radius: 5px;
 }
 button {
-  width: 40%;
+  width: 50%;
   height: 40px;
-  margin: 10px auto;
+  margin: auto;
   justify-content: center;
   display: block;
   color: #fff;
@@ -190,21 +209,123 @@ width: 200px;
 transform: scale(1.3); 
 }
 
-h1 {
-  text-align: center;
-  color: #F09713;
-}
 
 #need {
   align-items: center;
   font-size: 20px;
-  margin-left: 150px;
+  
 }
 
 label {
   text-align: center;
  
 }
+
+#createAcc {
+  text-align: center;
+  margin: 0;
+  text-decoration: wavy;
+  text-decoration-color: green;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  font-weight: bold;
+}
+
+h1 span {
+text-align: center;
+font-size: 20px;
+width: auto;
+margin: 2px;
+text-decoration: wavy;
+  text-decoration-color: green;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+/* position: absolute; */
+}
+#register {
+  margin-top: -75px;
+}
+
+.pulse {
+  -webkit-animation: pulsate 2.5s ease-out;
+    -webkit-animation-iteration-count: infinite; 
+    opacity: 0.3;
+}
+@-webkit-keyframes pulsate {
+    0% { opacity: 0.3; }
+    50% { opacity: 1.0; }
+    100% { opacity: 0.3; }
+}
+.c1 {
+transform: rotate(-60deg);
+color: #086320;
+
+}
+.c2 {
+transform: rotate(-50deg);
+color: #C78120;
+
+}
+.c3 {
+/* transform: rotate(-40deg); */
+color: #36BA53;
+
+}
+.c4 {
+/* transform: rotate(-30deg); */
+color: #A4CC4E;
+
+}
+.c5 {
+/* transform: rotate(-20deg); */
+color: #D1965E;
+
+}
+.c6 {
+/* transform: rotate(-10deg); */
+color: #F09713;
+
+}
+.c7 {
+/* transform: rotate(0deg); */
+color: #5C3E14;
+
+}
+.c8 {
+/* transform: rotate(10deg); */
+color: #086320;
+
+}
+.c9 {
+/* transform: rotate(20deg); */
+color: #C78120;
+
+}
+.c10 {
+/* transform: rotate(30deg); */
+color: #36BA53;
+
+}
+.c11 {
+/* transform: rotate(40deg); */
+color: #A4CC4E;
+
+}
+.c12 {
+/* transform: rotate(50deg); */
+color: #D1965E;
+
+}
+.c13 {
+/* transform: rotate(60deg); */
+color: #F09713;
+
+}
+
+
+
+
+
 
 
 

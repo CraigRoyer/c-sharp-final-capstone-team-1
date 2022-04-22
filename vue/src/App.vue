@@ -48,12 +48,6 @@ body {
   justify-content: flex-end;
 } 
 
-
-/* #aboutGardn {
-display: flex;
-flex-direction: column;
-} */
-
 a {
   display: flex;
   flex-direction: column;
@@ -63,7 +57,6 @@ a {
 }
 
 #logo {
-  width: 500px;
   height: 200px;
   
 } 
@@ -81,6 +74,9 @@ h3 {
 }
 
 #foota {
+  /* display: flex;
+  justify-content: flex-end; */
+
   display: flex;
   justify-content: flex-end;
 
@@ -108,8 +104,4 @@ h5 {
   color: #086320;
   text-decoration: none;
 }
-
-
-
-
 </style>

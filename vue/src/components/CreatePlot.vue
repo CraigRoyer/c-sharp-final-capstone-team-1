@@ -76,9 +76,9 @@ export default {
 
 <style scoped>
 
-.field {
-  width: 700px;
-  height: 700px;
+#wholeField {
+  width: 800px;
+  height: 800px;
   margin: auto;
   background: #af7804;
   border-radius: 98%;
@@ -88,3 +88,81 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
+#wholeField > form {
+  width: 300px;
+  height: 600px;
+}
+label {
+  color: #fff;
+  font-size: 3rem;
+  justify-content: center;
+  display: flex;
+  margin: 30px;
+  font-weight: bold;
+  transition: 0.5s ease-in-out;
+}
+/* .field {
+  width: 10px;
+  height: 10px;
+} */
+
+/* #wholeField > form > label:nth-child(5)
+{
+	font-size: 1.0rem;
+	color: rgb(38, 180, 38);
+	
+} */
+input {
+  width: 100%;
+  height: 20px;
+  background: #e0dede;
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+button {
+  width: 40%;
+  height: 40px;
+  margin: 10px auto;
+  justify-content: center;
+  display: block;
+  color: #fff;
+  background: #d1965e;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 20px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+button:hover {
+  background: #5c3e14;
+  
+}
+.login label {
+  color: #5c3e14;
+}
+.grow { 
+transition: all .6s ease-in-out; 
+}
+
+.grow:hover { 
+transform: scale(1.3); 
+}
+
+label {
+  font-size: 1.2rem;
+  margin: -10px;
+  color: #5C3E14;
+}
+
+
+
+</style>

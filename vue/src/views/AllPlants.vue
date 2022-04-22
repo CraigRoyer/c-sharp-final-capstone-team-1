@@ -1,6 +1,6 @@
 <template>
   <div id="allplants">
-    <h1 id="plants">Plants</h1>
+    <h1 id="plants" class="pulse">Plants</h1>
     <plant-list />
   </div>
 </template>
@@ -19,7 +19,11 @@ export default {
 
 #plants {
   display: flex;
-  margin-left: 5px;
-  padding-left: 120px;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+  color: #36BA53;
+  text-decoration-color: #5C3E14; 
+  font-size: 60px;
 }
 </style>

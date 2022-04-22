@@ -1,9 +1,10 @@
 <template>
   <div>
-    <h1>Create Plot</h1>
+    <h1 id="createplots" class="pulse">Create Plot</h1>
     <create-plot />
   </div>
 </template>
+
 
 <script>
 import CreatePlot from '../components/CreatePlot.vue';
@@ -16,29 +17,19 @@ export default {
 </script>
 
 <style scoped>
-
-body > div > div{
-  width: 500px;
-  height: 500px;
-  margin: auto;
-  background: #af7804;
-  border-radius: 98%;
-  box-shadow: 5px 20px 50px #8e4505;
-  display: flex;
-  flex-direction: column;
+#createplots {
+display: flex;
   align-items: center;
   justify-content: center;
-   
-}
-
-body > div > div > div > form {
-  display: flex;
-  flex-direction: row-reverse;
-  
-}
+  text-decoration: underline;
+  color: #36BA53;
+  text-decoration-color: #5C3E14; 
+  font-size: 60px;
+  }
 
 
 
 
 
 </style>
+

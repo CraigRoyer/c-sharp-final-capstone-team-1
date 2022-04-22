@@ -1,8 +1,12 @@
 <template>
 <div id="oh">
 
-    <h1> {{this.plot.plotName}} </h1>
-    <p> {{this.plot}}</p>
+    <h1  id="latitle"> {{this.plot.plotName}} </h1>
+    <p> <em>Length:</em> {{this.plot.length}}</p>
+    <p> <em>Width:</em> {{this.plot.width}}</p>
+    <p> <em>Sun Exposure:</em> {{this.plot.sunExposure}}</p>
+    <p> <em>Zone:</em> {{this.plot.zone}}</p>
+
     <h2> Plants In This Plot </h2>
      <table id="yo">
     <thead>
@@ -13,9 +17,9 @@
     </thead>
     <tbody>
       <tr v-for="plant in plants" :key="plant.plantId" v-on:click="getPlantByPlantId(plant.plantId)">
-        <!-- <td> 
-          <img :src="plant.image" class="plant-photo"/>
-        </td> -->
+      <td> 
+          <img :src="plant.imageUrl" class="plant-photo"/>
+        </td>
         <td class="name">{{ plant.name }}</td>
       </tr>
     </tbody>
@@ -63,11 +67,13 @@ export default {
 
 <style scoped>
 #oh {
-  background-color: #C78120;
+  background-color: olivedrab;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  width: 1200px;
-  height: 350px;
-  border-radius: 50%;
+  font-size: 1.5rem;
 }
 
 table, td{
@@ -76,6 +82,9 @@ table, td{
   padding: 20px;
   text-align: center;
   
+}
+#latitle {
+  text-decoration: underline;
 }
 
 td:hover {

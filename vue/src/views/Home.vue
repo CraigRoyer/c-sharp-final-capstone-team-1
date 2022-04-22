@@ -1,8 +1,10 @@
 <template>
+<div>
   <div class ="home">
+    
     <div id="ah">
     <div id="topPlot">
-    <h1>My Newest Garden Plot</h1>
+    <h1 id="mngp" class="pulse">My Newest Garden Plot</h1>
     </div>
     <div id="topPlotInfo">
     <top-plot-detail v-bind:plotId='$route.params.plotId'/>
@@ -24,10 +26,11 @@
       <router-link class="navLinks" :to="{ name: 'CreatePlant' }"
       >Add New Plant</router-link>
       </div>
-  <div>
-    <div class="weatherWidget" ></div>
 
-</div>
+    
+
+  </div>
+  <div class="weatherWidget" ></div>
   </div>
 </template>
 
@@ -76,6 +79,12 @@ export default {
   margin: 25px;
   width: 50vw;
 }
+.weatherWidget {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .navLinks {
   background-color: #36BA53;
@@ -104,6 +113,7 @@ h1 {
   text-decoration: underline;
   font-weight: bolder;
   font-size: 3.0rem;
+  
 }
 
 #ah {
@@ -112,6 +122,16 @@ h1 {
   width: 1200px;
   height: 350px;
   border-radius: 50%;
+}
+
+#mngp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: underline;
+  color: #36BA53;
+  text-decoration-color: #5C3E14; 
+  font-size: 60px;
 }
 
 </style>

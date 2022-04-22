@@ -1,4 +1,5 @@
 <template>
+<div id="aye">
   <table id="yo">
     <thead>
       <tr>
@@ -8,14 +9,16 @@
     </thead>
     <tbody>
       <tr v-for="plant in plants" :key="plant.plantId" v-on:click="getPlantByPlantId(plant.plantId)">
-        <!-- <td> 
-          <img :src="plant.image" class="plant-photo"/>
-        </td> -->
+        <td> 
+          <img :src="plant.imageUrl" class="plant-photo"/>
+        </td>
         <td class="name">{{ plant.name }}</td>
       </tr>
     </tbody>
   </table>
+  </div>
 </template>
+
 
 <script>
 import plantService from "../services/PlantService";
@@ -41,10 +44,26 @@ export default {
 </script>
 
 <style scoped>
+#aye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+th {
+  font-size: 1.5rem;
+}
+td {
+  font-size: 1.2rem;
+  background-color: #C78120;
+}
+table {
+  background-color: #D1965E;
+  
+}
 table, td{
   border: 1px solid;
   width: auto;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   
 }
@@ -52,5 +71,4 @@ table, td{
 td:hover {
   background-color: #A4CC4E;
   }
-
 </style>

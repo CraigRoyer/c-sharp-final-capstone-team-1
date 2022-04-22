@@ -54,9 +54,9 @@ namespace Capstone.DAO
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, cost_per_25_seeds, sow_instructions, space_instructions, harvest_instructions, compatible_plants, avoid_instructions, img_url) " +
+                    SqlCommand cmd = new SqlCommand("INSERT INTO plants (plant_name, cost_per_25_seeds, sow_instructions, space_instructions, harvest_instructions, compatible_plants, avoid_instructions) " +
                                                     "OUTPUT INSERTED.plant_id " +
-                                                    "VALUES(@plant_name, @cost_per_25_seeds, @sow_instructions, @space_instructions, @harvest_instructions, @compatible_plants, @avoid_instructions, @img_url)", conn);
+                                                    "VALUES(@plant_name, @cost_per_25_seeds, @sow_instructions, @space_instructions, @harvest_instructions, @compatible_plants, @avoid_instructions,)", conn);
                     cmd.Parameters.AddWithValue("@plant_name", newPlant.Name);
                     cmd.Parameters.AddWithValue("@cost_per_25_seeds", newPlant.CostPer25Seeds);
                     cmd.Parameters.AddWithValue("@sow_instructions", newPlant.SowInstructions);
@@ -64,7 +64,6 @@ namespace Capstone.DAO
                     cmd.Parameters.AddWithValue("@harvest_instructions", newPlant.HarvestInstructions);
                     cmd.Parameters.AddWithValue("@compatible_plants", newPlant.CompatiblePlants);
                     cmd.Parameters.AddWithValue("@avoid_instructions", newPlant.AvoidInstructions);
-                    cmd.Parameters.AddWithValue("@img_url", newPlant.ImageUrl);
 
 
                     newPlantId = Convert.ToInt32(cmd.ExecuteScalar());

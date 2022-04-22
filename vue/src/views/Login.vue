@@ -85,90 +85,6 @@ path {
 text {
   fill: #ff9800;
 }
-/* #simple_arc {
-	display: block;
-             text-align: center;
-             font-size: 3rem;
-	}
-
-
-#simple_arc>span[class^=w]:nth-of-type(n+0){
-					display:block;
-					position:absolute;
-          -moz-transform-origin:50% 100%;
-					-webkit-transform-origin:50% 100%;
-					-o-transform-origin:50% 100%;
-					-ms-transform-origin:50% 100%;
-					transform-origin:50% 100%;
-					}
-
-
-#simple_arc .w0 {
-					-moz-transform: rotate(-1.14rad);
-					-webkit-transform: rotate(-1.14rad);
-					-o-transform: rotate(-1.14rad);
-					-ms-transform: rotate(-1.14rad);
-					transform: rotate(-1.14rad);
-                     width: 21px;
-					height: 24px;
-					left: 42.7px;
-					top: 93.95px;
-					}
-          #simple_arc .w1 {
-					-moz-transform: rotate(-1.14rad);
-					-webkit-transform: rotate(-1.14rad);
-					-o-transform: rotate(-1.14rad);
-					-ms-transform: rotate(-1.14rad);
-					transform: rotate(-1.14rad);
-                     width: 21px;
-					height: 24px;
-					left: 42.7px;
-					top: 93.95px;
-					} 
-#simple_arc .w1 {
-					-moz-transform: rotate(-1.14rad);
-					-webkit-transform: rotate(-1.14rad);
-					-o-transform: rotate(-1.14rad);
-					-ms-transform: rotate(-1.14rad);
-					transform: rotate(-1.14rad);
-                     width: 21px;
-					height: 24px;
-					left: 42.7px;
-					top: 93.95px;
-					}
-          #simple_arc .w1 {
-					-moz-transform: rotate(-1.14rad);
-					-webkit-transform: rotate(-1.14rad);
-					-o-transform: rotate(-1.14rad);
-					-ms-transform: rotate(-1.14rad);
-					transform: rotate(-1.14rad);
-                     width: 21px;
-					height: 24px;
-					left: 42.7px;
-					top: 93.95px;
-					} 
-#simple_arc .w2 {
-					-moz-transform: rotate(-1.14rad);
-					-webkit-transform: rotate(-1.14rad);
-					-o-transform: rotate(-1.14rad);
-					-ms-transform: rotate(-1.14rad);
-					transform: rotate(-1.14rad);
-                     width: 21px;
-					height: 24px;
-					left: 42.7px;
-					top: 93.95px;
-					}
-          #simple_arc .w1 {
-					-moz-transform: rotate(-1.14rad);
-					-webkit-transform: rotate(-1.14rad);
-					-o-transform: rotate(-1.14rad);
-					-ms-transform: rotate(-1.14rad);
-					transform: rotate(-1.14rad);
-                     width: 21px;
-					height: 24px;
-					left: 42.7px;
-					top: 93.95px;
-					}  */
 body {
   margin: 0;
   padding: 0;
@@ -176,8 +92,8 @@ body {
 }
 
 #main {
-  width: 700px;
-  height: 700px;
+  width: 650px;
+  height: 650px;
   margin: auto;
   background: #af7804;
   border-radius: 98%;

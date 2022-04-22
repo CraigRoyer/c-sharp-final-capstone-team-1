@@ -1,5 +1,5 @@
 <template>
-  <table>
+  <table id="tablePlot">
     <thead>
       <tr>
         <th>&nbsp;</th>
@@ -9,8 +9,6 @@
     <tbody>
       <tr v-for="plot in plots" :key="plot.plotId" v-on:click="getPlot(plot.plotId)">
         <td class="PlotName">Plot Name: {{ plot.plotName }}</td>
-        <td class="PlotId">Plot Id: {{ plot.plotId }}</td>
-        <td class="PlotZone">Plot Zone: {{ plot.zone }}</td>
       </tr>
     </tbody>
   </table>
@@ -40,10 +38,27 @@ export default {
 </script>
 
 <style scoped>
+
+#tablePlot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+th {
+  font-size: 1.5rem;
+}
+td {
+  font-size: 1.2rem;
+  background-color: #C78120;
+}
+table {
+  background-color: #D1965E;
+  
+}
 table, td{
   border: 1px solid;
   width: auto;
-  padding: 20px;
+  padding: 40px;
   text-align: center;
   
 }
